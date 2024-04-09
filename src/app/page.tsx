@@ -1,9 +1,11 @@
-import Image from "next/image";
+import ClientButton from "@/app/components/ClientButton";
+import ServerButton from "@/app/components/ServerButton";
 
 export default function Home() {
   return (
     <main className="">
-      <div>Main</div>
+      <ServerButton />
+      <ClientButton />
     </main>
   );
 }
