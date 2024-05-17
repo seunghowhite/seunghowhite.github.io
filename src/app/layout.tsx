@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import ScrollProgressBar from "@/app/components/ScrollProgressBar";
 
 export const metadata: Metadata = {
   title: "eatstone log",
@@ -14,7 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <ScrollProgressBar />
+        {children}
+      </body>
     </html>
   );
 }
