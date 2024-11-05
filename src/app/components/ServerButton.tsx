@@ -4,7 +4,7 @@ import React from "react";
 const ServerButton = () => {
   return (
     <div>
-      <div>ServerButton</div>
+      <div className="bg-blue-100">ServerButton</div>
       <Link href={"/test1"}>test1 page</Link>
     </div>
   );

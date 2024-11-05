@@ -27,6 +27,7 @@ module.exports = {
       "always",
       [
         "feat",
+        "package",
         "fix",
         "design",
         "style",
