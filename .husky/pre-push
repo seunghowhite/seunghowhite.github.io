@@ -1,0 +1,15 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+pnpm ts
+# pnpm ts 결과 확인
+if [ $? -eq 0 ]; then
+  # 에러가 없을 때
+  echo "[✅ type check passed! 👍]"
+  exit 0
+else
+  # 에러가 있을 때
+  echo "[⛔️ type check failed 😞]"
+  exit 1
+fi
+

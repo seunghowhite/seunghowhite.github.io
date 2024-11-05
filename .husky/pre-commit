@@ -1,0 +1,16 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+pnpm lint --cache
+
+# lint 결과 확인
+if [ $? -ne 0 ]; then
+  # lint에 오류가 있을 때
+  echo "[⛔️ Check your lint error 😞]"
+  exit 1
+else
+  # lint가 성공했을 때
+  echo "[✅ Lint check passed! 👍]"
+  exit 0
+fi
+
