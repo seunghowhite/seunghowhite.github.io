@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import ScrollProgressBar from "@/app/components/ScrollProgressBar";
+import Footer from "@/app/components/Footer";
 // import { Open_Sans } from 'next/font/google';
 // const sans = Open_Sans({ subsets: ['latin'] });
 export const metadata: Metadata = {
@@ -18,7 +18,8 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <ScrollProgressBar />
-        {children}
+        <main className="relative h-lvh bg-slate-500 pb-80">{children}</main>
+        <Footer />
       </body>
     </html>
   );
