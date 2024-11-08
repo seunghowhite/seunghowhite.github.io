@@ -25,13 +25,14 @@ const DarkModeToggle = () => {
   return (
     <div
       onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
-      className={
-        "relative flex h-[2em] w-[4em] cursor-pointer items-center rounded-full bg-white px-[0.3em] shadow-[inset_0_8px_60px_rgba(0,0,0,0.1),inset_0_8px_8px_rgba(0,0,0,0.1),inset_0_-4px_4px_rgba(0,0,0,0.1)] dark:bg-gray-800 dark:shadow-[inset_0_8px_60px_rgba(0,0,0,0.3),inset_8px_0_8px_rgba(0,0,0,0.3),inset_0_-4px_4px_rgba(0,0,0,0.3)]"
-      }
+      className={`dark:shadow-[inset_0_8px_60px_rgba(0,0,0,0.3),inset_8px_0_8px_rgba(199, 117, 117, 0.3),inset_0_-4px_4px_rgba(0,0,0,0.3)]
+        relative flex h-[2em] w-[4em] cursor-pointer items-center rounded-full bg-white px-[0.3em]
+        shadow-[inset_0_8px_60px_rgba(0,0,0,0.1),inset_0_8px_8px_rgba(0,0,0,0.1),inset_0_-4px_4px_rgba(0,0,0,0.1)]`}
     >
       <div
         className={cn(
-          "absolute flex h-[1.5em] w-[1.5em] items-center justify-center rounded-full bg-notMuted transition-transform duration-300 ease-in-out",
+          `absolute flex h-[1.5em] w-[1.5em] items-center justify-center rounded-full bg-darkModeBg transition-transform
+          duration-300 ease-in-out`,
           currentTheme === "dark" && "translate-x-[2em]"
         )}
       >

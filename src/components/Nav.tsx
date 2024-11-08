@@ -20,14 +20,16 @@ const navList = [
 export const Nav = () => {
   const { ref, marginTop } = useSpyElem(65);
   const pathname = usePathname();
-  console.log("pathname: ", pathname);
+  // console.log("pathname: ", pathname);
   // const isLocalePath = localePathList.some((path) => pathname.startsWith(path));
 
   return (
     <nav
       style={{ marginTop }}
       ref={ref}
-      className="bg-background fixed z-40 flex w-full flex-col items-center justify-center border-b shadow-sm print:hidden"
+      className={cn(
+        "bg - background fixed z-40 flex w-full flex-col items-center justify-center border-b shadow-sm print:hidden"
+      )}
     >
       <ScrollProgressBar />
       <div className="mt-1 flex h-[64px] w-full max-w-[1200px] items-center justify-between px-4">

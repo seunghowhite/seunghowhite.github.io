@@ -7,14 +7,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        darkModeBg: "var(--hello)",
+        darkModeBg: "var(--base)",
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
         },
         notMuted: {
-          DEFAULT: "hsl(var(--muted-foreground))",
-          foreground: "hsl(var(--foreground-rgb))",
+          DEFAULT: "var(--muted-foreground)",
+          foreground: "var(--foreground-rgb)",
         },
       },
       backgroundImage: {

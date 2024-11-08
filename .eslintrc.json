@@ -40,10 +40,10 @@
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
     // ESLint 내에서 Prettier를 실행하는 이 플러그인에서 제공하는 규칙을 킴
     "prettier/prettier": [
-      "error",
+      "warn",
       {
-        "useTabs": false,
         "endOfLine": "auto",
+        "useTabs": false,
         "printWidth": 120
       }
     ],

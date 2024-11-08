@@ -3,23 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  --hello: #aea;
-
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  /* --foreground-rgb: #000000; 검은색 (0, 0, 0) */
+  /* --background-start-rgb: #d6dbdc; 밝은 회색 (214, 219, 220) */
+  /* --background-end-rgb: #ffffff; 흰색 (255, 255, 255) */
+  --base: #ffffff; /*#ffffff; 흰색 (255, 255, 255) */
+  --muted: #b0b9c2; /*어두운 회색 파란색 (HSL 210, 40%, 96.1%) */
+  --muted-foreground: #4b6376; /* 연한 파란색 (HSL 215.4, 16.3%, 46.9%) */
 }
 
 :root.dark {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
-  --hello: #e5e5;
-
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
+  /* --foreground-rgb: #ffffff; 흰색 (255, 255, 255) */
+  /*--background-start-rgb: #000000; /* 검은색 (0, 0, 0) */
+  /*--background-end-rgb: #000000; /* 검은색 (0, 0, 0) */
+  --base: #000000; /* #000000; 검은색 (0, 0, 0) */
+  --muted: #3a4c70; /* 어두운 파란색 (HSL 217.2, 32.6%, 17.5%)*/
+  --muted-foreground: #a0b2c7; /*밝은 파란색 (HSL 215, 20.2%, 65.1%)*/
 }
 /* :root {
   --white: hsl(210 40% 98%);
