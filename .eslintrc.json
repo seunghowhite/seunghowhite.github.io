@@ -19,11 +19,21 @@
   "plugins": ["@typescript-eslint", "react", "prettier"],
   "rules": {
     // "indent": ["error", "tab"],
+
     "no-console": "warn",
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
-    "max-len": ["error", { "code": 200, "tabWidth": 2 }],
+    // "max-len": [
+    //   "warn",
+    //   {
+    //     "useTabs": false,
+    //     "endOfLine": "auto",
+    //     "printWidth": 120
+    //   }
+    // ],
+    "max-len": ["warn", { "code": 120, "tabWidth": 2 }],
+    // "max-len": ["off"], // max-len을 Prettier와 충돌하지 않도록 비활성화
     //React 를 명시 안해줘기
     "react/react-in-jsx-scope": "off",
     // ts파일에서 tsx구문 허용 (Next.js)
@@ -34,7 +44,7 @@
       {
         "useTabs": false,
         "endOfLine": "auto",
-        "printWidth": 100
+        "printWidth": 120
       }
     ],
     // any사용

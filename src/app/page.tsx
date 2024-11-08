@@ -1,11 +1,5 @@
-import ClientButton from "@/app/components/ClientButton";
-import ServerButton from "@/app/components/ServerButton";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <main className="">
-      <ServerButton />
-      <ClientButton />
-    </main>
-  );
+  redirect("/blog");
 }
