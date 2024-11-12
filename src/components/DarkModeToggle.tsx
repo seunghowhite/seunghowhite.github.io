@@ -31,9 +31,9 @@ const DarkModeToggle = () => {
     >
       <div
         className={cn(
-          `absolute flex h-[1.5em] w-[1.5em] items-center justify-center rounded-full bg-darkModeBg transition-transform
+          `absolute flex h-[1.5em] w-[1.5em] items-center justify-center rounded-full bg-background transition-transform
           duration-300 ease-in-out`,
-          currentTheme === "dark" && "translate-x-[2em]"
+          currentTheme === "dark" && "translate-x-[2em]",
         )}
       >
         {/* 다크 모드일 때 달 아이콘 표시 */}

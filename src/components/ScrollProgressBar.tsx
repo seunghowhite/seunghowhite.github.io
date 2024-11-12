@@ -18,7 +18,7 @@ const ScrollProgressBar = () => {
   };
   return (
     <div
-      className="h-2 w-full bg-blue-600"
+      className="fixed top-0 z-20 h-1 w-full bg-blue-600"
       style={{ transform: `translateX(${scrolled - 100}%)` }}
     />
   );

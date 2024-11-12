@@ -2,6 +2,7 @@ import Link from "next/link.js";
 
 import IconGithub from "@/components/Icons/Github";
 import IconLinkedin from "@/components/Icons/LinkedIn";
+import IconMail from "@/components/Icons/Mail";
 
 const Footer = () => {
   return (
@@ -22,6 +23,13 @@ const Footer = () => {
           target="_blank"
         >
           <IconLinkedin
+            className="fill-foreground transition hover:fill-blue-600"
+            height={30}
+            width={30}
+          />
+        </Link>
+        <Link href="mailto:qortmdgh0320@gmail.com">
+          <IconMail
             className="fill-foreground transition hover:fill-blue-600"
             height={30}
             width={30}

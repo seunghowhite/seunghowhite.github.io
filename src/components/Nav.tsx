@@ -20,6 +20,7 @@ const navList = [
 export const Nav = () => {
   const { ref, marginTop } = useSpyElem(65);
   const pathname = usePathname();
+
   // console.log("pathname: ", pathname);
   // const isLocalePath = localePathList.some((path) => pathname.startsWith(path));
 
@@ -27,20 +28,18 @@ export const Nav = () => {
     <nav
       style={{ marginTop }}
       ref={ref}
-      className={cn(
-        "bg - background fixed z-40 flex w-full flex-col items-center justify-center border-b shadow-sm print:hidden"
-      )}
+      className="fixed top-0 z-40 flex w-full flex-col items-center justify-center border-b bg-background shadow-sm print:hidden"
     >
       <ScrollProgressBar />
-      <div className="mt-1 flex h-[64px] w-full max-w-[1200px] items-center justify-between px-4">
+      <div className="mt-1 flex h-16 w-full max-w-[1200px] items-center justify-between px-4">
         <div className="flex items-center font-medium">
           {navList.map((navItem) => (
             <Link
               href={navItem.href}
               key={navItem.name}
               className={cn(
-                "hover:text-primary h-[2rem] rounded-full px-4 py-1 text-center text-sm transition-colors",
-                pathname?.startsWith(navItem.href) ? "text-primary bg-muted font-medium" : "text-muted-foreground"
+                "hover:text-primary rounded-full px-4 py-1 text-center text-sm transition-colors",
+                pathname?.startsWith(navItem.href) ? "text-primary bg-muted font-medium" : "text-muted-foreground",
               )}
             >
               {navItem.name}
@@ -51,13 +50,12 @@ export const Nav = () => {
         {/* {isLocalePath && <LanguageSelector className="hidden sm:flex" />} */}
 
         <div className="flex gap-3">
-          {/* <DarkMode /> */}
           <DarkModeToggle />
           <Link
             href="https://github.com/eat-stone"
             target="_blank"
           >
-            <IconGithub className="size-[1.2rem]" />
+            <IconGithub className="size-[1.6rem]" />
           </Link>
         </div>
       </div>
