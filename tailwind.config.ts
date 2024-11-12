@@ -7,7 +7,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        darkModeBg: "var(--base)",
+        background: "var(--background)",
         muted: {
           DEFAULT: "var(--muted)",
           foreground: "var(--muted-foreground)",

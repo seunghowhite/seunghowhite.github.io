@@ -39,7 +39,7 @@ export const Nav = () => {
               key={navItem.name}
               className={cn(
                 "hover:text-primary rounded-full px-4 py-1 text-center text-sm transition-colors",
-                pathname?.startsWith(navItem.href) ? "text-primary bg-muted font-medium" : "text-muted-foreground",
+                pathname?.startsWith(navItem.href) ? "text-primary bg-muted font-medium" : "text-muted-foreground"
               )}
             >
               {navItem.name}

@@ -10,7 +10,7 @@ const Blog = async ({ category }: PostListProps) => {
   //postList:
   //* [
   //*   {
-  //*     url: '/blog/categroy_2/title_2',
+  //*     url: '/blog/category_2/title_2',
   //*     categoryPath: 'categroy_2',
   //*     categoryPublicName: 'Categroy 2',
   //*     slug: 'title_2',
@@ -49,11 +49,17 @@ const Blog = async ({ category }: PostListProps) => {
   //*allPostCount:  2
 
   return (
-    <main className="">
-      {/* <div>블로그페이지</div> */}
-      {/* <ServerButton />
-      <ClientButton /> */}
-    </main>
+    <section className="mx-auto mt-12 h-[2000px] w-full max-w-[950px] px-4">
+      <div>
+        <p className="mb-4 h-72 bg-blue-950">text</p>
+        <p className="mb-4 h-72 bg-blue-950">text</p>
+        <p className="mb-4 h-72 bg-blue-950">text</p>
+        <p className="mb-4 h-72 bg-blue-950">text</p>
+        <p className="mb-4 h-72 bg-blue-950">text</p>
+        <p className="mb-4 h-72 bg-blue-950">text</p>
+        <p className="mb-4 h-72 bg-blue-950">text</p>
+      </div>
+    </section>
   );
 };
 
