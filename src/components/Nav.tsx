@@ -1,14 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 // import DarkMode from "@/components/DarkMode";
 import DarkModeToggle from "@/components/DarkModeToggle";
-import IconGithub from "@/components/Icons/Github";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import { useSpyElem } from "@/hooks/useSpy";
 import { cn } from "@/lib/utils";
+import icon from "@/public/icon/stone_icon.png";
 
 const navList = [
   { name: "Eat-Stone", href: "/blog" },
@@ -32,7 +33,12 @@ export const Nav = () => {
     >
       <ScrollProgressBar />
       <div className="mt-1 flex h-16 w-full max-w-[1200px] items-center justify-between px-4">
-        <div className="flex items-center font-medium">
+        <div className="flex items-center gap-2 font-medium">
+          <Image
+            src={icon}
+            alt="icon"
+            className="h-5 w-7"
+          />
           {navList.map((navItem) => (
             <Link
               href={navItem.href}
@@ -51,12 +57,6 @@ export const Nav = () => {
 
         <div className="flex gap-3">
           <DarkModeToggle />
-          <Link
-            href="https://github.com/eat-stone"
-            target="_blank"
-          >
-            <IconGithub className="size-[1.6rem]" />
-          </Link>
         </div>
       </div>
     </nav>

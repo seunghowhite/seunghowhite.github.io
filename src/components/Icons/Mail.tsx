@@ -1,6 +1,4 @@
-// icon:custom | Your Custom Icon
-
-function IconCustom({ ...props }) {
+export default function IconCustom({ ...props }) {
   return (
     <svg
       viewBox="0 0 6.35 6.35"
@@ -26,5 +24,3 @@ function IconCustom({ ...props }) {
     </svg>
   );
 }
-
-export default IconCustom;

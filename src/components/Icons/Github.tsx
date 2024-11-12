@@ -1,4 +1,4 @@
-function IconGithub({ ...props }) {
+export default function IconGithub({ ...props }) {
   return (
     <svg
       fill="currentColor"
@@ -17,5 +17,3 @@ function IconGithub({ ...props }) {
     </svg>
   );
 }
-
-export default IconGithub;

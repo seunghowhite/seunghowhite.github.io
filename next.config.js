@@ -11,6 +11,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  images: { unoptimized: true },
   compiler: {
     removeConsole: DEPLOYMENT_MODE === "production",
   },

@@ -12,10 +12,6 @@ const config: Config = {
           DEFAULT: "var(--muted)",
           foreground: "var(--muted-foreground)",
         },
-        notMuted: {
-          DEFAULT: "var(--muted-foreground)",
-          foreground: "var(--foreground-rgb)",
-        },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

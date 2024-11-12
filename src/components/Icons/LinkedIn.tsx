@@ -1,7 +1,6 @@
 // icon:linkedin | Simple Icons https://simpleicons.org | SimpleIcons.org
-import * as React from "react";
 
-function IconLinkedin({ ...props }) {
+export default function IconLinkedin({ ...props }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -20,5 +19,3 @@ function IconLinkedin({ ...props }) {
     </svg>
   );
 }
-
-export default IconLinkedin;
