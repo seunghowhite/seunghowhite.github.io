@@ -5,8 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 // import DarkMode from "@/components/DarkMode";
-import DarkModeToggle from "@/components/DarkModeToggle";
-import ScrollProgressBar from "@/components/ScrollProgressBar";
+import DarkModeToggle from "@/components/layout/DarkModeToggle";
+import ScrollProgressBar from "@/components/layout/ScrollProgressBar";
 import { useSpyElem } from "@/hooks/useSpy";
 import { cn } from "@/lib/utils";
 import icon from "@/public/icon/stone_icon.png";
@@ -18,7 +18,7 @@ const navList = [
 
 // const localePathList = ["/about"];
 
-export const Nav = () => {
+const Nav = () => {
   const { ref, marginTop } = useSpyElem(65);
   const pathname = usePathname();
 
@@ -29,10 +29,10 @@ export const Nav = () => {
     <nav
       style={{ marginTop }}
       ref={ref}
-      className="fixed top-0 z-40 flex w-full flex-col items-center justify-center border-b shadow-sm print:hidden"
+      className="fixed top-0 z-20 flex w-full justify-center border-b shadow-md print:hidden"
     >
       <ScrollProgressBar />
-      <div className="mt-1 flex h-16 w-full max-w-[1200px] items-center justify-between px-4">
+      <div className="post mt-1 flex h-16 items-center justify-between">
         <div className="flex items-center gap-2 font-medium">
           <Image
             src={icon}
@@ -62,3 +62,5 @@ export const Nav = () => {
     </nav>
   );
 };
+
+export default Nav;

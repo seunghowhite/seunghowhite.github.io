@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import Footer from "@/components/Footer";
-import { Nav } from "@/components/Nav";
+import Footer from "@/components/layout/Footer";
+import Nav from "@/components/layout/Nav";
 import { baseDomain, blogDesc, blogName, blogThumbnailURL, icon } from "@/config/const";
 import "@/config/globals.css";
 import Providers from "@/lib/Providers";
@@ -42,7 +42,7 @@ export default function RootLayout({
       <body className="font-pretendard flex min-h-screen flex-col">
         <Providers>
           <Nav />
-          <main className="mt-[64px] flex flex-1 flex-col">{children}</main>
+          <main className="mt-[70px] flex flex-1 flex-col">{children}</main>
           <Footer />
         </Providers>
         {/* <Toaster />

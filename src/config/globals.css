@@ -11,6 +11,15 @@
   }
 }
 
+@layer components {
+  .post {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 80rem;
+    padding: 0 1rem;
+  }
+}
+
 :root {
   --white: #ffffff;
   --black: #282832;
@@ -27,5 +36,5 @@
   --foreground: var(--white);
 
   --muted: #777a89;
-  --border: #1e293b;
+  --border: #3b4252;
 }
