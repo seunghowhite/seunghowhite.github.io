@@ -29,7 +29,7 @@ export const Nav = () => {
     <nav
       style={{ marginTop }}
       ref={ref}
-      className="fixed top-0 z-40 flex w-full flex-col items-center justify-center border-b bg-background shadow-sm print:hidden"
+      className="fixed top-0 z-40 flex w-full flex-col items-center justify-center border-b shadow-sm print:hidden"
     >
       <ScrollProgressBar />
       <div className="mt-1 flex h-16 w-full max-w-[1200px] items-center justify-between px-4">

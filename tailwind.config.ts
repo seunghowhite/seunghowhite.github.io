@@ -7,11 +7,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        border: "var(--border)",
         background: "var(--background)",
-        muted: {
-          DEFAULT: "var(--muted)",
-          foreground: "var(--muted-foreground)",
-        },
+        foreground: "var(--foreground)",
+        muted: "var(--muted)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

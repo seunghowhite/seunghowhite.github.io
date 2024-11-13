@@ -2,19 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --white: #fffff;
-  --black: #121212;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply text-foreground bg-background;
+  }
+}
 
-  --background: white;
-  --base: #ffffff; /*#ffffff; 흰색 (255, 255, 255) */
-  --muted: #b0b9c2; /*어두운 회색 파란색 (HSL 210, 40%, 96.1%) */
-  --muted-foreground: #4b6376; /* 연한 파란색 (HSL 215.4, 16.3%, 46.9%) */
+:root {
+  --white: #ffffff;
+  --black: #282832;
+
+  --background: var(--white);
+  --foreground: var(--black);
+
+  --muted: #c2c2c2;
+  --border: #e2e8f0;
 }
 
 :root.dark {
   --background: var(--black);
-  --base: #000000; /* #000000; 검은색 (0, 0, 0) */
-  --muted: #3a4c70; /* 어두운 파란색 (HSL 217.2, 32.6%, 17.5%)*/
-  --muted-foreground: #a0b2c7; /*밝은 파란색 (HSL 215, 20.2%, 65.1%)*/
+  --foreground: var(--white);
+
+  --muted: #777a89;
+  --border: #1e293b;
 }
