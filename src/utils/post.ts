@@ -18,3 +18,18 @@ export const getAllPosts = () => {
     };
   });
 };
+
+export const getAllCategoryPath = (mainCategroy: "knowledge" | "body" | "moral") => {
+  const postPaths: string[] = sync(`${POSTS_PATH}/${mainCategroy}/**/*.mdx`);
+  return postPaths.map((path) => {
+    return {
+      slug: path.slice(path.indexOf(BASE_PATH)).replace(".mdx", ""),
+    };
+  });
+};
+
+export const getCategoryList = (mainCategory: "knowledge" | "body" | "moral") => {
+  const mainCategoryPaths: string[] = sync(`${POSTS_PATH}/${mainCategory}/*`);
+  const categoryLists = mainCategoryPaths.map((path) => path.split("/").slice(-1)?.[0]);
+  return categoryLists;
+};

@@ -1,7 +1,15 @@
-import { getAllPosts } from "@/utils/post";
+import { getAllPosts, getCategoryList } from "@/utils/post";
 
-export const generateStaticParams = () => {};
-
-export default function KnowlegePage() {
-  return <div>KnowlegePage</div>;
+export default async function KnowlegePage() {
+  const categoryList = await getCategoryList("knowledge");
+  return (
+    <div>
+      <div>KnowlegePage all page</div>
+      <div>
+        {categoryList.map((category, index) => (
+          <div key={index}>{category}</div>
+        ))}
+      </div>
+    </div>
+  );
 }
