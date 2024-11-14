@@ -1,12 +1,31 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import ScrollProgressBar from "@/app/components/ScrollProgressBar";
-// import { Open_Sans } from 'next/font/google';
-// const sans = Open_Sans({ subsets: ['latin'] });
+
+import Footer from "@/components/layout/Footer";
+import Nav from "@/components/layout/Nav";
+import { baseDomain, blogDesc, blogName, blogThumbnailURL, icon } from "@/config/const";
+import "@/config/globals.css";
+import Providers from "@/lib/Providers";
+
 export const metadata: Metadata = {
-  title: "eatstone log",
-  description: "this is blog",
+  metadataBase: new URL(baseDomain),
+  title: blogName,
+  description: blogDesc,
+  icons: {
+    icon: icon,
+  },
+  openGraph: {
+    title: blogName,
+    description: blogDesc,
+    siteName: blogName,
+    images: [blogThumbnailURL],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: blogName,
+    description: blogDesc,
+    images: [blogThumbnailURL],
+  },
 };
 
 export default function RootLayout({
@@ -15,10 +34,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body>
-        <ScrollProgressBar />
-        {children}
+    <html
+      lang="en"
+      className="h-full scroll-my-20 scroll-smooth"
+      suppressHydrationWarning
+    >
+      <body className="font-pretendard flex min-h-screen flex-col">
+        <Providers>
+          <Nav />
+          <main className="mt-[70px] flex flex-1 flex-col">{children}</main>
+          <Footer />
+        </Providers>
+        {/* <Toaster />
+        <Analytics />
+        <SpeedInsights />
+        <GoogleAnalytics gaId="G-TRBVGE9TYP" />
+        <GoogleTagManager gtmId="G-TRBVGE9TYP" /> */}
       </body>
     </html>
   );

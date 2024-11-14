@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply text-foreground bg-background;
+  }
+}
+
+@layer components {
+  .post {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 80rem;
+    padding: 0 1rem;
+  }
+}
+
+:root {
+  --white: #ffffff;
+  --black: #282832;
+
+  --background: var(--white);
+  --foreground: var(--black);
+
+  --muted: #c2c2c2;
+  --border: #e2e8f0;
+}
+
+:root.dark {
+  --background: var(--black);
+  --foreground: var(--white);
+
+  --muted: #777a89;
+  --border: #3b4252;
+}

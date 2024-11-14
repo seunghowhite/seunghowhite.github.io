@@ -1,11 +1,5 @@
-import ClientButton from "@/app/components/ClientButton";
-import ServerButton from "@/app/components/ServerButton";
+import React from "react";
 
-export default function Home() {
-  return (
-    <main className="">
-      <ServerButton />
-      <ClientButton />
-    </main>
-  );
+export default function HomePage() {
+  return <div>HomePage 소개글 넣자 </div>;
 }

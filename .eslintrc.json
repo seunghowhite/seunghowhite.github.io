@@ -18,30 +18,14 @@
   },
   "plugins": ["@typescript-eslint", "react", "prettier"],
   "rules": {
-    // "indent": ["error", "tab"],
     "no-console": "warn",
     "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "double"],
-    "semi": ["error", "always"],
-    "max-len": ["error", { "code": 200, "tabWidth": 2 }],
-    //React 를 명시 안해줘기
+    "max-len": ["off"],
     "react/react-in-jsx-scope": "off",
-    // ts파일에서 tsx구문 허용 (Next.js)
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-    // ESLint 내에서 Prettier를 실행하는 이 플러그인에서 제공하는 규칙을 킴
-    "prettier/prettier": [
-      "error",
-      {
-        "useTabs": false,
-        "endOfLine": "auto",
-        "printWidth": 100
-      }
-    ],
-    // any사용
+    "prettier/prettier": "error",
     "@typescript-eslint/no-explicit-any": "warn",
-    // 사용하지 않는 변수 경고
     "@typescript-eslint/no-unused-vars": "warn",
-    // useEffect 내에서 사용하지 않는 dep 경고 끄기
     "react-hooks/exhaustive-deps": "off"
   }
 }
