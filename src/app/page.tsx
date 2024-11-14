@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import React from "react";
 
-export default function Home() {
-  redirect("/blog");
+export default function HomePage() {
+  return <div>HomePage 소개글 넣자 </div>;
 }

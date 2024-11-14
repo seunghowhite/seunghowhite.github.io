@@ -14,6 +14,9 @@ import icon from "@/public/icon/stone_icon.png";
 const navList = [
   { name: "Eat-Stone", href: "/blog" },
   { name: "About", href: "/about" },
+  { name: "Knowledge", href: "/knowledge" },
+  { name: "Moral", href: "/moral" },
+  { name: "Body", href: "/body" },
 ];
 
 // const localePathList = ["/about"];
@@ -34,11 +37,17 @@ const Nav = () => {
       <ScrollProgressBar />
       <div className="post mt-1 flex h-16 items-center justify-between">
         <div className="flex items-center gap-2 font-medium">
-          <Image
-            src={icon}
-            alt="icon"
+          <Link
+            href={"/"}
             className="h-5 w-7"
-          />
+          >
+            <Image
+              src={icon}
+              alt="icon"
+              className="h-5 w-7"
+            />
+          </Link>
+
           {navList.map((navItem) => (
             <Link
               href={navItem.href}
