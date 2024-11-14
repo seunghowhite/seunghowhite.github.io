@@ -16,12 +16,12 @@ export function generateStaticParams() {
 
 const BlogPage = async ({ params: { category } }: Props) => {
   const paths = getPostPaths();
-  console.log("paths: ", paths);
+  // console.log("paths: ", paths);
   const folder = category || "**";
   const BASE_PATH = "/src/_posts";
   const POSTS_PATH = path.join(process.cwd(), BASE_PATH);
   const postPaths: string[] = sync(`${POSTS_PATH}/${folder}/**/*.mdx`);
-  console.log("postPaths: ", postPaths);
+  // console.log("postPaths: ", postPaths);
   return <div className="post">BlogPage</div>;
 };
 
