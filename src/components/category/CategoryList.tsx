@@ -16,13 +16,13 @@ export default function CategoryList({ list, subject, targetCategory }: Props) {
 
   return (
     <>
-      <section className="post mb-10 hidden sm:block">
+      <section className="post mt-12 hidden sm:block">
         <ul className="flex flex-wrap gap-3">
           {cglist.map(([category, count]) => (
             <li key={category}>
               <Link href={`/${subject}${category === "all" ? "" : "/" + category}`}>
                 <div
-                  className={`w-28 rounded-md py-1 text-center
+                  className={`min-w-28 rounded-md px-2 py-1 text-center
                   ${(category === "all" && !targetCategory) || targetCategory === category ? "bg-muted" : "hover:bg-accent"}`}
                 >
                   {category}({count})

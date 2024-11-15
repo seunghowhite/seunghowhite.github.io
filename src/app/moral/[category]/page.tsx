@@ -1,23 +1,38 @@
+// /knowledge/[subtitle]/page.tsx 파일
 import Link from "next/link";
 
 import CategoryList from "@/components/category/CategoryList";
-import { getCategoryCounts, getCategoryList, getSubCategoryPosts } from "@/utils/post";
+import { getSortedPostList } from "@/lib/post";
+import { getCategoryCounts, getCategoryList, getCategoryPostList, getSubCategoryPosts } from "@/utils/post";
 
-export default async function KnowlegePage() {
-  const subject = "knowledge";
+// todo subject를 기준으로 모든 subject에 관련된 category를 가지고 와야함. 경우의수를 다 보는거지.
+interface Props {
+  params: { category: string };
+}
+
+export async function generateStaticParams() {
+  const categoryList = await getCategoryList("moral");
+  const categorys = categoryList.map((category) => ({ category }));
+  return categorys;
+}
+
+// 페이지 컴포넌트
+export default async function KnowledgeCategoryPage({ params: { category } }: Props) {
+  const subject = "moral";
   const categoryCountList = getCategoryCounts(subject);
-  const posts = getSubCategoryPosts(subject);
+  const posts = getSubCategoryPosts(subject, category);
+
   return (
     <div>
       <CategoryList
         list={categoryCountList}
         subject={subject}
-        targetCategory={null}
+        targetCategory={category}
       />
-
-      <div className="mt-20 flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
         {posts.map((item) => (
-          <div
+          <Link
+            href={item.url}
             key={item.category}
             className="bg-blue-300"
           >
@@ -35,7 +50,7 @@ export default async function KnowlegePage() {
             <div>url{item.url}</div>
             {/* 읽기 시간 */}
             <div className="post-reading-time">{item.readingMinutes}분 읽기</div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

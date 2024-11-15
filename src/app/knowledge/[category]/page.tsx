@@ -24,8 +24,6 @@ export default async function KnowledgeCategoryPage({ params: { category } }: Pr
 
   return (
     <div>
-      <h1>Knowledge Category Page</h1>
-
       <CategoryList
         list={categoryCountList}
         subject={subject}
