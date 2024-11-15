@@ -36,13 +36,14 @@ const Nav = () => {
             alt="icon"
             className="h-5 w-7 transition-transform duration-300 group-hover:-rotate-45"
           />
-          <h1 className="text-lg font-bold transition-colors duration-300 group-hover:text-muted group-hover:delay-150">
-            <span className="relative hidden sm:block">
+          <h1 className="text-lg font-bold transition-colors duration-300 group-hover:text-muted group-hover:delay-100">
+            <span className="relative hidden 2sm:block">
               Eat-Stone
-              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-muted transition-all duration-700 group-hover:w-full group-hover:delay-150"></span>
+              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-muted transition-all duration-700 group-hover:w-full group-hover:delay-100"></span>
             </span>
           </h1>
         </Link>
+
         <div className="absolute left-1/2 flex -translate-x-1/2 transform items-center font-medium">
           {navList.map((navItem) => (
             <Link
@@ -61,7 +62,7 @@ const Nav = () => {
         <div className="flex">
           <Link
             href={"/about"}
-            className="hidden px-4 py-1 text-center text-sm sm:block"
+            className="hidden px-4 py-1 text-center text-sm 2sm:block"
           >
             About
           </Link>
