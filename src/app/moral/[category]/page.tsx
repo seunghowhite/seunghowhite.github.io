@@ -2,6 +2,7 @@
 import Link from "next/link";
 
 import CategoryList from "@/components/category/CategoryList";
+import PostList from "@/components/post_list/PostList";
 import { getSortedPostList } from "@/lib/post";
 import { getCategoryCounts, getCategoryList, getCategoryPostList, getSubCategoryPosts } from "@/utils/post";
 
@@ -20,7 +21,7 @@ export async function generateStaticParams() {
 export default async function KnowledgeCategoryPage({ params: { category } }: Props) {
   const subject = "moral";
   const categoryCountList = getCategoryCounts(subject);
-  const posts = getSubCategoryPosts(subject, category);
+  const postList = getSubCategoryPosts(subject, category);
 
   return (
     <div>
@@ -29,30 +30,7 @@ export default async function KnowledgeCategoryPage({ params: { category } }: Pr
         subject={subject}
         targetCategory={category}
       />
-      <div className="flex flex-col gap-4">
-        {posts.map((item) => (
-          <Link
-            href={item.url}
-            key={item.category}
-            className="bg-blue-300"
-          >
-            {/* 카테고리 이름 */}
-            <div className="post-category">category{item.category}</div>
-
-            {/* 게시 날짜 */}
-            <div className="post-date">date{item.date}</div>
-
-            {/* 제목 */}
-            <h2 className="post-title">title{item.title}</h2>
-
-            {/* 섬네일 이미지 */}
-            <div>thumbnail{item.thumbnail}</div>
-            <div>url{item.url}</div>
-            {/* 읽기 시간 */}
-            <div className="post-reading-time">{item.readingMinutes}분 읽기</div>
-          </Link>
-        ))}
-      </div>
+      <PostList postList={postList} />
     </div>
   );
 }

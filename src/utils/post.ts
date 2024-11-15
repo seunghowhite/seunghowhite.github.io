@@ -1,3 +1,4 @@
+import titleCase from "@/utils/titleCase";
 import fs from "fs";
 import { sync } from "glob";
 import matter from "gray-matter";
@@ -53,13 +54,13 @@ export const getCategoryCounts = (subject: Subject) => {
     [key: string]: number;
   };
 };
+// category folder name을 public name으로 변경 : dir_name -> Dir Name
+export const getCategoryPublicName = (categoryPath: string) => {
+  return titleCase(categoryPath.replace(/_/g, " "));
+};
 //reat, nextjs 같은 서브 카테고리시 보여줄 리스트
-export const getSubCategoryPosts = (mainCategory: Subject, subCategory?: string) => {
-  // subCategory가 제공되지 않으면 mainCategory 하위의 모든 *.mdx 파일을 불러옵니다.
-  const globPath = subCategory
-    ? `${POSTS_PATH}/${mainCategory}/${subCategory}/**/*.mdx`
-    : `${POSTS_PATH}/${mainCategory}/**/*.mdx`;
-
+export const getSubCategoryPosts = (subject: Subject, category?: string) => {
+  const globPath = category ? `${POSTS_PATH}/${subject}/${category}/**/*.mdx` : `${POSTS_PATH}/${subject}/**/**/*.mdx`;
   const postPaths: string[] = sync(globPath);
 
   return postPaths.map((postPath) => {
@@ -67,24 +68,23 @@ export const getSubCategoryPosts = (mainCategory: Subject, subCategory?: string)
     const { data, content } = matter(fileContent);
 
     const readingMinutes = Math.ceil(readingTime(content).minutes); // 읽기 시간 계산
-    const dateString = data.date ? new Date(data.date).toISOString().split("T")[0] : ""; // 날짜 형식 변환
-
-    // `postPath`에서 `mainCategory`와 `subCategory`를 기준으로 슬러그와 URL 생성
+    const date = data.date ? new Date(data.date).toISOString().split("T")[0] : ""; // 날짜 형식 변환
     const pathParts = postPath.split(path.sep);
-    const subCategoryFromPath = pathParts[pathParts.indexOf(mainCategory) + 1]; // 하위 카테고리 추출
-    const slug = pathParts[pathParts.indexOf(subCategoryFromPath) + 1]; // 슬러그 추출
-
-    // URL 생성: "/[mainCategory]/[subCategory]/[slug]"
-    const url = `/${mainCategory}/${subCategoryFromPath}/${slug}`;
-
+    const categoryPath = pathParts[pathParts.indexOf(subject) + 1]; // 하위 카테고리 추출
+    const post = pathParts[pathParts.indexOf(categoryPath) + 1]; // 슬러그 추출
+    const url = `/${subject}/${categoryPath}/${post}`; // URL 생성
+    const title = data.title as string;
+    const thumbnail = data.thumbnail as string;
+    const desc = data.desc as string;
     return {
-      category: subCategoryFromPath, // 추출된 하위 카테고리
-      thumbnail: data.thumbnail, // 섬네일 링크
-      title: data.title, // 제목
+      category: getCategoryPublicName(categoryPath), // 추출된 하위 카테고리
+      thumbnail, // 섬네일 링크
+      title, //제목
+      desc, // 부제목
       readingMinutes, // 읽기 시간 (분)
-      date: dateString, // 날짜 (ISO 형식)
+      date, // 날짜 (ISO 형식)
       url, // URL
-      slug, // 슬러그
+      post, // 슬러그
     };
   });
 };

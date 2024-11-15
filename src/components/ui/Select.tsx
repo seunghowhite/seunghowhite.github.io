@@ -83,7 +83,7 @@ export default function Select({ list, subject, targetCategory }: SelectProps) {
 
       {/* 카테고리 리스트 */}
       <ul
-        className={`absolute left-0 top-12 min-w-48 overflow-y-auto rounded-md border bg-background py-2 shadow-xl transition-all
+        className={`absolute left-0 top-12 z-30 min-w-48 overflow-y-auto rounded-md border bg-background py-2 shadow-xl transition-all
           duration-300 ease-in-out ${isOpen ? "h-auto opacity-100" : "max-h-0 opacity-0"}`}
       >
         {list.map(([category, count]) => (

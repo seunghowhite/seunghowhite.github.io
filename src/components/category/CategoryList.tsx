@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import Select from "@/components/ui/Select";
 import { Subject } from "@/utils/post";
+import titleCase from "@/utils/titleCase";
 
 interface Props {
   list: { [key: string]: number };
@@ -16,7 +17,7 @@ export default function CategoryList({ list, subject, targetCategory }: Props) {
 
   return (
     <>
-      <section className="post mt-12 hidden sm:block">
+      <section className="post my-6 hidden md:block">
         <ul className="flex flex-wrap gap-3">
           {cglist.map(([category, count]) => (
             <li key={category}>
@@ -25,14 +26,14 @@ export default function CategoryList({ list, subject, targetCategory }: Props) {
                   className={`min-w-28 rounded-md px-2 py-1 text-center
                   ${(category === "all" && !targetCategory) || targetCategory === category ? "bg-muted" : "hover:bg-accent"}`}
                 >
-                  {category}({count})
+                  {titleCase(category)}({count})
                 </div>
               </Link>
             </li>
           ))}
         </ul>
       </section>
-      <section className="mb-10 px-2 sm:hidden">
+      <section className="my-6 px-2 md:hidden">
         <Select
           list={cglist}
           subject={subject}

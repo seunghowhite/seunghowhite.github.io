@@ -11,7 +11,7 @@ export interface PostMatter {
 
 export interface Post extends PostMatter {
   url: string;
-  slug: string;
+  post: string;
   categoryPath: string;
   content: string;
   readingMinutes: number;
