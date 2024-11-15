@@ -1,23 +1,20 @@
 import Link from "next/link";
 
-import { getAllPosts, getCategoryList, getSubCategoryPosts } from "@/utils/post";
+import CategoryList from "@/components/category/CategoryList";
+import { getCategoryCounts, getCategoryList, getSubCategoryPosts } from "@/utils/post";
 
 export default async function KnowlegePage() {
-  const categoryList = await getCategoryList("knowledge");
-  const posts = await getSubCategoryPosts("knowledge");
+  const subject = "knowledge";
+  const categoryCountList = getCategoryCounts(subject);
+  const posts = getSubCategoryPosts(subject);
   return (
     <div>
       <div>KnowlegePage all page</div>
-      <div>
-        {categoryList.map((category, index) => (
-          <Link
-            href={`/knowledge/${category}`}
-            key={index}
-          >
-            <div>{category}</div>
-          </Link>
-        ))}
-      </div>
+      <CategoryList
+        list={categoryCountList}
+        subject={subject}
+        targetCategory={null}
+      />
 
       <div className="mt-20 flex flex-col gap-4">
         {posts.map((item) => (

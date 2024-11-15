@@ -27,24 +27,25 @@ const Nav = () => {
     >
       <ScrollProgressBar />
       <div className="post mt-1 flex h-16 items-center justify-between">
-        <Link
-          href={"/"}
-          className="group flex items-center gap-1"
-        >
-          <Image
-            src={icon}
-            alt="icon"
-            className="h-5 w-7 transition-transform duration-300 group-hover:-rotate-45"
-          />
-          <h1 className="text-lg font-bold transition-colors duration-300 group-hover:text-muted group-hover:delay-100">
-            <span className="relative hidden 2sm:block">
-              Eat-Stone
-              <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-muted transition-all duration-700 group-hover:w-full group-hover:delay-100"></span>
-            </span>
-          </h1>
-        </Link>
-
-        <div className="absolute left-1/2 flex -translate-x-1/2 transform items-center font-medium">
+        <section>
+          <Link
+            href={"/"}
+            className="group flex items-center gap-1"
+          >
+            <Image
+              src={icon}
+              alt="icon"
+              className="h-5 w-7 transition-transform duration-300 group-hover:-rotate-45"
+            />
+            <h1 className="text-lg font-bold transition-colors duration-300 group-hover:text-muted group-hover:delay-100">
+              <span className="relative hidden 2sm:block">
+                Eat-Stone
+                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-muted transition-all duration-700 group-hover:w-full group-hover:delay-100"></span>
+              </span>
+            </h1>
+          </Link>
+        </section>
+        <section className="absolute left-1/2 flex -translate-x-1/2 transform items-center font-medium">
           {navList.map((navItem) => (
             <Link
               href={navItem.href}
@@ -57,9 +58,9 @@ const Nav = () => {
               {navItem.name}
             </Link>
           ))}
-        </div>
+        </section>
 
-        <div className="flex">
+        <section className="flex">
           <Link
             href={"/about"}
             className="hidden px-4 py-1 text-center text-sm 2sm:block"
@@ -67,7 +68,7 @@ const Nav = () => {
             About
           </Link>
           <DarkModeToggle />
-        </div>
+        </section>
       </div>
     </nav>
   );

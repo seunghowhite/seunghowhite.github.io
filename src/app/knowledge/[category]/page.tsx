@@ -1,14 +1,15 @@
 // /knowledge/[subtitle]/page.tsx 파일
 import Link from "next/link";
 
+import CategoryList from "@/components/category/CategoryList";
 import { getSortedPostList } from "@/lib/post";
-import { getCategoryList, getSubCategoryPosts } from "@/utils/post";
+import { getCategoryCounts, getCategoryList, getCategoryPostList, getSubCategoryPosts } from "@/utils/post";
 
-// 허용된 param 외 접근시 404
-// export const dynamic = "force-static";
-// export const dynamicParams = false;
+// todo subject를 기준으로 모든 subject에 관련된 category를 가지고 와야함. 경우의수를 다 보는거지.
+interface Props {
+  params: { category: string };
+}
 
-// 모든 필요한 subtitle 값을 포함하도록 수정
 export async function generateStaticParams() {
   const categoryList = await getCategoryList("knowledge");
   const categorys = categoryList.map((category) => ({ category }));
@@ -16,14 +17,20 @@ export async function generateStaticParams() {
 }
 
 // 페이지 컴포넌트
-export default async function KnowledgeCategoryPage({ params }: { params: { category: string } }) {
-  console.log("params: ", params);
-  // const postList = await getSortedPostList(params.category);
-  const posts = await getSubCategoryPosts("knowledge", params.category);
+export default async function KnowledgeCategoryPage({ params: { category } }: Props) {
+  const subject = "knowledge";
+  const categoryCountList = getCategoryCounts(subject);
+  const posts = getSubCategoryPosts(subject, category);
 
   return (
     <div>
-      <h1>Knowledge Category Page: {params.category}</h1>
+      <h1>Knowledge Category Page</h1>
+
+      <CategoryList
+        list={categoryCountList}
+        subject={subject}
+        targetCategory={category}
+      />
       <div className="flex flex-col gap-4">
         {posts.map((item) => (
           <Link

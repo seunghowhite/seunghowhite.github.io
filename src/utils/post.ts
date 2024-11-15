@@ -7,49 +7,60 @@ import readingTime from "reading-time";
 const BASE_PATH = "/src/_posts";
 const POSTS_PATH = path.join(process.cwd(), BASE_PATH);
 
-export const getAllPosts = () => {
-  const postPaths: string[] = sync(`${POSTS_PATH}/**/*.mdx`);
-  return postPaths.map((path) => {
-    return {
-      slug: path.slice(path.indexOf(BASE_PATH)).replace(".mdx", ""),
-    };
+export type Subject = "knowledge" | "body" | "moral";
+type Paths = string[];
+
+// !주어진 경로에서 지정한 depth의 디렉토리 이름을 추출하는 함수
+const extractDirectoryAtDepth = (path: string, depthFromEnd: number) => path.split("/").slice(-depthFromEnd)[0];
+// !모든 MDX 파일 조회
+export const getPostPaths = (subject?: Subject) => {
+  const folder = subject || "**";
+  const postPaths: string[] = sync(`${POSTS_PATH}/${folder}/**/*.mdx`);
+  return postPaths;
+};
+
+// !주어진 경로 목록에서 고유한 카테고리 목록을 추출하는 함수
+export const getCategories = (paths: Paths) => {
+  return Array.from(new Set(paths.map((path) => extractDirectoryAtDepth(path, 3))));
+};
+
+// !주어진 주제의 상위 카테고리 목록을 가져오는 함수
+export const getCategoryList = (subject: Subject) => {
+  const postPaths = getPostPaths(subject);
+  const categories = getCategories(postPaths);
+  return categories;
+};
+
+// !주어진 category와 post를 가져오는 함수
+export const getCategoryPostList = (subject: Subject) => {
+  const categoryPaths = getPostPaths(subject);
+  const categoryAndPostList = categoryPaths.map((path) => {
+    const category = extractDirectoryAtDepth(path, 3); // category
+    const post = extractDirectoryAtDepth(path, 2); // post
+    return [category, post];
   });
+  return categoryAndPostList;
 };
-
-export const getAllCategoryPath = (mainCategroy: "knowledge" | "body" | "moral") => {
-  const postPaths: string[] = sync(`${POSTS_PATH}/${mainCategroy}/**/*.mdx`);
-  return postPaths.map((path) => {
-    return {
-      slug: path.slice(path.indexOf(BASE_PATH)).replace(".mdx", ""),
-    };
-  });
-};
-
-//!
-
-export const getCategoryList = (mainCategory: "knowledge" | "body" | "moral") => {
-  const mainCategoryPaths: string[] = sync(`${POSTS_PATH}/${mainCategory}/**/*.mdx`);
-
-  const categoryLists = mainCategoryPaths.map((path) => path.split("/").slice(-3)?.[0]);
-  return categoryLists;
-};
-export const getDetailList = (mainCategory: "knowledge" | "body" | "moral") => {
-  const mainCategoryPaths: string[] = sync(`${POSTS_PATH}/${mainCategory}/**/*.mdx`);
-
-  // console.log("mainCategoryPath312312s: ", mainCategoryPaths[0].split("/").slice(-1));
-  const categoryLists = mainCategoryPaths.map((path) => path.split("/").slice(-3, -1));
-
-  return categoryLists;
+// !전체 개수와 각 카테고리별 개수를 계산하는 함수
+export const getCategoryCounts = (subject: Subject) => {
+  const categoryPostList = getCategoryPostList(subject);
+  const categoryCounts = categoryPostList.reduce<{ [key: string]: number }>((acc, [category]) => {
+    acc[category] = (acc[category] || 0) + 1;
+    return acc;
+  }, {});
+  const allCount = categoryPostList.length;
+  return { all: allCount, ...categoryCounts } as {
+    [key: string]: number;
+  };
 };
 //reat, nextjs 같은 서브 카테고리시 보여줄 리스트
-export const getSubCategoryPosts = (mainCategory: "knowledge" | "body" | "moral", subCategory?: string) => {
+export const getSubCategoryPosts = (mainCategory: Subject, subCategory?: string) => {
   // subCategory가 제공되지 않으면 mainCategory 하위의 모든 *.mdx 파일을 불러옵니다.
   const globPath = subCategory
     ? `${POSTS_PATH}/${mainCategory}/${subCategory}/**/*.mdx`
     : `${POSTS_PATH}/${mainCategory}/**/*.mdx`;
 
   const postPaths: string[] = sync(globPath);
-  console.log("postPaths: ", postPaths);
 
   return postPaths.map((postPath) => {
     const fileContent = fs.readFileSync(postPath, "utf8");
@@ -77,79 +88,3 @@ export const getSubCategoryPosts = (mainCategory: "knowledge" | "body" | "moral"
     };
   });
 };
-
-// export interface PostMatter {
-//   title: string;
-//   date: Date;
-//   dateString: string;
-//   thumbnail: string;
-//   desc: string;
-// }
-
-// export interface Post extends PostMatter {
-//   url: string;
-//   slug: string;
-//   categoryPath: string;
-//   content: string;
-//   readingMinutes: number;
-//   categoryPublicName: string;
-// }
-// // post를 날짜 최신순으로 정렬
-// const sortPostList = (PostList: Post[]) => {
-//   return PostList.sort((a, b) => (a.date > b.date ? -1 : 1));
-// };
-
-// // 모든 MDX 파일 조회
-// export const getPostPaths = (category?: string) => {
-//   const folder = category || "**";
-//   const postPaths: string[] = sync(`${POSTS_PATH}/${folder}/**/*.mdx`);
-//   return postPaths;
-// };
-// // category folder name을 public name으로 변경 : dir_name -> Dir Name
-// export const getCategoryPublicName = (dirPath: string) =>
-//   dirPath
-//     .split("_")
-//     .map((token) => token[0].toUpperCase() + token.slice(1, token.length))
-//     .join(" ");
-// // MDX 파일 파싱 : abstract / detail 구분
-// // MDX의 개요 파싱
-// // url, cg path, cg name, slug
-// export const parsePostAbstract = (postPath: string) => {
-//   const filePath = postPath.slice(postPath.indexOf(BASE_PATH)).replace(`${BASE_PATH}/`, "").replace(".mdx", "");
-
-//   const [categoryPath, slug] = filePath.split("/");
-//   const url = `/blog/${categoryPath}/${slug}`;
-//   const categoryPublicName = getCategoryPublicName(categoryPath);
-//   return { url, categoryPath, categoryPublicName, slug };
-// };
-// // MDX detail
-// const parsePostDetail = async (postPath: string) => {
-//   const file = fs.readFileSync(postPath, "utf8");
-//   const { data, content } = matter(file);
-//   const grayMatter = data as PostMatter;
-//   const readingMinutes = Math.ceil(readingTime(content).minutes);
-//   // const dateString = dayjs(grayMatter.date).locale("ko").format("YYYY년 MM월 DD일");
-//   // const dateString = dayjs(grayMatter.date).locale("ko").format("YYYY년 MM월 DD일");
-//   const dateString = "YYYY년 MM월 DD일";
-//   return { ...grayMatter, dateString, content, readingMinutes };
-// };
-
-// const parsePost = async (postPath: string): Promise<Post> => {
-//   const postAbstract = parsePostAbstract(postPath);
-//   const postDetail = await parsePostDetail(postPath);
-//   return {
-//     ...postAbstract,
-//     ...postDetail,
-//   };
-// };
-
-// // 모든 포스트 목록 조회. 블로그 메인 페이지에서 사용
-// export const getPostList = async (category?: string): Promise<Post[]> => {
-//   const postPaths = getPostPaths(category);
-//   const postList = await Promise.all(postPaths.map((postPath) => parsePost(postPath)));
-//   return postList;
-// };
-// export const getSortedPostList = async (category?: string) => {
-//   const postList = await getPostList(category);
-//   return sortPostList(postList);
-// };

@@ -33,8 +33,8 @@ const DarkModeToggle = () => {
     >
       <div
         className={cn(
-          `absolute flex h-[2em] w-[2em] items-center justify-center rounded-md bg-muted transition-transform duration-300
-          ease-in-out sm:h-[1.3em] sm:w-[1.3em] sm:rounded-full sm:bg-background md:h-[1.5em] md:w-[1.5em]`,
+          `absolute flex h-[2em] w-[2em] items-center justify-center rounded-full transition-transform duration-300 ease-in-out
+          hover:bg-muted sm:h-[1.3em] sm:w-[1.3em] sm:bg-background sm:hover:bg-background md:h-[1.5em] md:w-[1.5em]`,
           currentTheme === "dark" && "sm:translate-x-[1.2em] md:translate-x-[1.8em]"
         )}
       >

@@ -1,20 +1,19 @@
 // /knowledge/[subtitle]/page.tsx 파일
 import { getSortedPostList } from "@/lib/post";
-import { getCategoryList, getDetailList, getSubCategoryPosts } from "@/utils/post";
+import { getCategoryList, getCategoryPostList, getSubCategoryPosts } from "@/utils/post";
 
 // 허용된 param 외 접근시 404
 // export const dynamic = "force-static";
 // export const dynamicParams = false;
 
-type Props = {
+interface Props {
   params: { category: string; post: string };
-};
+}
 
 // 모든 필요한 subtitle 값을 포함하도록 수정
 export async function generateStaticParams() {
-  const categoryList = await getDetailList("knowledge");
-
-  const categorys = categoryList.map((item) => ({ category: item[0], post: item[1] }));
+  const categoryPostList = await getCategoryPostList("knowledge");
+  const categorys = categoryPostList.map((item) => ({ category: item[0], post: item[1] }));
   return categorys;
 }
 
