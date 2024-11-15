@@ -54,10 +54,7 @@ export const getCategoryCounts = (subject: Subject) => {
     [key: string]: number;
   };
 };
-// category folder name을 public name으로 변경 : dir_name -> Dir Name
-export const getCategoryPublicName = (categoryPath: string) => {
-  return titleCase(categoryPath.replace(/_/g, " "));
-};
+
 //reat, nextjs 같은 서브 카테고리시 보여줄 리스트
 export const getSubCategoryPosts = (subject: Subject, category?: string) => {
   const globPath = category ? `${POSTS_PATH}/${subject}/${category}/**/*.mdx` : `${POSTS_PATH}/${subject}/**/**/*.mdx`;
@@ -77,7 +74,7 @@ export const getSubCategoryPosts = (subject: Subject, category?: string) => {
     const thumbnail = data.thumbnail as string;
     const desc = data.desc as string;
     return {
-      category: getCategoryPublicName(categoryPath), // 추출된 하위 카테고리
+      category: titleCase(categoryPath), // 추출된 하위 카테고리
       thumbnail, // 섬네일 링크
       title, //제목
       desc, // 부제목

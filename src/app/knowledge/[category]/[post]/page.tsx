@@ -1,5 +1,4 @@
 // /knowledge/[subtitle]/page.tsx 파일
-import { getSortedPostList } from "@/lib/post";
 import { getCategoryList, getCategoryPostList, getSubCategoryPosts } from "@/utils/post";
 
 // 허용된 param 외 접근시 404

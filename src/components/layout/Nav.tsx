@@ -23,7 +23,7 @@ const Nav = () => {
     <nav
       style={{ marginTop }}
       ref={ref}
-      className="fixed top-0 z-20 flex w-full justify-center border-b shadow-md print:hidden"
+      className="fixed top-0 z-20 flex w-full justify-center border-b bg-background shadow-md print:hidden"
     >
       <ScrollProgressBar />
       <div className="post mt-1 flex h-16 items-center justify-between">

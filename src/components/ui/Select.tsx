@@ -7,6 +7,7 @@ import Link from "next/link";
 import IconThinArrow from "@/components/Icons/ArrowThin";
 import IconCheck from "@/components/Icons/Check";
 import { Subject } from "@/utils/post";
+import titleCase from "@/utils/titleCase";
 
 interface SelectItemProps {
   category: string;
@@ -29,7 +30,7 @@ const SelectItem = ({ category, count, subject, targetCategory, setIsOpen }: Sel
         onClick={() => setIsOpen(false)}
       >
         <div className="relative w-full rounded-sm py-1 pl-3 hover:bg-muted">
-          {category} ({count}){isSelected && <IconCheck className="absolute right-2 top-2" />}
+          {titleCase(category)} ({count}){isSelected && <IconCheck className="absolute right-2 top-2" />}
         </div>
       </Link>
     </li>
@@ -77,7 +78,7 @@ export default function Select({ list, subject, targetCategory }: SelectProps) {
         onClick={toggleMenu}
         className="relative mb-2 flex min-w-48 items-center justify-between gap-2 rounded-md border px-4 py-2 pr-10"
       >
-        <span>{categoryLabel}</span>
+        <span>{titleCase(categoryLabel)}</span>
         <IconThinArrow className="absolute right-3" />
       </button>
 

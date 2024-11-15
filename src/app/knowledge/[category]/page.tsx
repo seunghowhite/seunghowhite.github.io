@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import CategoryList from "@/components/category/CategoryList";
 import PostList from "@/components/post_list/PostList";
-import { getSortedPostList } from "@/lib/post";
 import { getCategoryCounts, getCategoryList, getCategoryPostList, getSubCategoryPosts } from "@/utils/post";
 
 // todo subject를 기준으로 모든 subject에 관련된 category를 가지고 와야함. 경우의수를 다 보는거지.

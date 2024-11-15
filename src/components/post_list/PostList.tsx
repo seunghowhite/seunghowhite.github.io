@@ -21,7 +21,7 @@ interface Props {
 export default function PostList({ postList }: Props) {
   return (
     <section className="post px-8">
-      <ul className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
+      <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
         {postList.map((post) => (
           <>
             <Link
