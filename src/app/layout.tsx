@@ -6,7 +6,7 @@ import "@/config/globals.css";
 import Providers from "@/lib/Providers";
 import { getMetadata } from "@/utils/metadata";
 
-export const metadata: Metadata = getMetadata();
+export const metadata: Metadata = getMetadata({});
 
 export default function RootLayout({
   children,
