@@ -6,7 +6,11 @@ import { getMetadata } from "@/utils/metadata";
 import { getCategoryCounts, getSubCategoryPosts } from "@/utils/post";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return getMetadata({ asPath: `/knowledge`, keywords: ["knowledge", "지식", "개발"], ogImage: `/knowledge/test` });
+  return getMetadata({
+    asPath: `/knowledge`,
+    keywords: ["knowledge", "지식", "개발"],
+    ogImage: `/posts/knowledge/test`,
+  });
 }
 
 export default async function KnowlegePage() {

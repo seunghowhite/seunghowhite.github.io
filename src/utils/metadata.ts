@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const META = {
-  title: "프론트엔드 개발자 백승호의 블로그",
-  siteName: "개발자 백승호의 블로그",
+  title: "백승호의 블로그",
+  siteName: "프론트엔드 개발자 백승호의 블로그",
   description: "지덕체 기반으로 기록을 합니다",
   keyword: ["백승호", "eat-stone", "seunghowhite", "stone"],
   url: "https://seunghowhite.github.io",
