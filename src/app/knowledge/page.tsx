@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return getMetadata({
     asPath: `/knowledge`,
     keywords: ["knowledge", "지식", "개발"],
-    ogImage: `/posts/knowledge/test`,
+    ogImage: `/posts/knowledge/test.png`,
   });
 }
 

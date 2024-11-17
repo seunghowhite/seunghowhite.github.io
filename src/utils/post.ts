@@ -55,6 +55,33 @@ export const getCategoryCounts = (subject: Subject) => {
   };
 };
 
+// export const getPostDetail = async (subject: string, category: string) => {
+//   const filePath = `${POSTS_PATH}/${subject}/${category}/content.mdx`;
+//   const detail = await parsePost(filePath);
+//   return detail;
+// };
+export const parseToc = (content: string) => {
+  const regex = /^(##|###) (.*$)/gim;
+  const headingList = content.match(regex);
+  return (
+    headingList?.map((heading: string) => ({
+      text: heading.replace("##", "").replace("#", ""),
+      link:
+        "#" +
+        heading
+          .replace("# ", "")
+          .replace("#", "")
+          // eslint-disable-next-line no-useless-escape
+          .replace(/[\[\]:!@#$/%^&*()+=,.]/g, "")
+          .replace(/ /g, "-")
+          .toLowerCase()
+          .replace("?", ""),
+      indent: (heading.match(/#/g)?.length || 2) - 2,
+    })) || []
+  );
+};
+// export const getPostMetaData = () => {};
+
 //reat, nextjs 같은 서브 카테고리시 보여줄 리스트
 export const getSubCategoryPosts = (subject: Subject, category?: string) => {
   const globPath = category ? `${POSTS_PATH}/${subject}/${category}/**/*.mdx` : `${POSTS_PATH}/${subject}/**/**/*.mdx`;
@@ -62,6 +89,7 @@ export const getSubCategoryPosts = (subject: Subject, category?: string) => {
 
   return postPaths.map((postPath) => {
     const fileContent = fs.readFileSync(postPath, "utf8");
+    // console.log("fileContent: ", fileContent);
     const { data, content } = matter(fileContent);
 
     const readingMinutes = Math.ceil(readingTime(content).minutes); // 읽기 시간 계산

@@ -1,5 +1,10 @@
 // /knowledge/[subtitle]/page.tsx 파일
-import { getCategoryList, getCategoryPostList, getSubCategoryPosts } from "@/utils/post";
+import { PostBody } from "@/components/post_detail/PostBody";
+import PostHeader from "@/components/post_detail/PostHeader";
+import TocSidebar from "@/components/post_detail/TableOfContentSidebar";
+import TableOfContentTop from "@/components/post_detail/TableOfContentTop";
+import { getPostDetail } from "@/lib/post";
+import { getCategoryList, getCategoryPostList, getSubCategoryPosts, parseToc } from "@/utils/post";
 
 // 허용된 param 외 접근시 404
 // export const dynamic = "force-static";
@@ -21,13 +26,21 @@ export default async function PostPage({ params: { category, post } }: Props) {
   console.log("category: ", category);
   console.log("post: ", post);
   // const postList = await getSortedPostList(params.category);
+  const postData = await getPostDetail("knowledge", category, post);
+  const toc = parseToc(postData.content);
   // const posts = await getSubCategoryPosts("category",category);
 
   return (
-    <div>
-      <h2>detail</h2>
-      <h1>category : {category}</h1>
-      <h1>post : {post}</h1>
-    </div>
+    <section className="prose mx-auto w-full max-w-[47rem] px-5 dark:prose-invert sm:px-6">
+      <PostHeader post={{ category, subject: "knowledge" }} />
+      <TableOfContentTop toc={toc} />
+      <article className="relative">
+        <TocSidebar toc={toc} />
+        <PostBody content={postData.content} />
+      </article>
+      <hr />
+
+      {/* <FloatingButton /> */}
+    </section>
   );
 }
