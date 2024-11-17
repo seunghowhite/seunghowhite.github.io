@@ -2,31 +2,11 @@ import type { Metadata } from "next";
 
 import Footer from "@/components/layout/Footer";
 import Nav from "@/components/layout/Nav";
-import { baseDomain, blogDesc, blogName, blogThumbnailURL, icon } from "@/config/const";
 import "@/config/globals.css";
 import Providers from "@/lib/Providers";
+import { getMetadata } from "@/utils/metadata";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(baseDomain),
-  title: blogName,
-  description: blogDesc,
-  icons: {
-    icon: icon,
-  },
-  openGraph: {
-    title: blogName,
-    description: blogDesc,
-    siteName: blogName,
-    images: [blogThumbnailURL],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: blogName,
-    description: blogDesc,
-    images: [blogThumbnailURL],
-  },
-};
+export const metadata: Metadata = getMetadata({});
 
 export default function RootLayout({
   children,

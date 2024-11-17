@@ -4,69 +4,71 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// import DarkMode from "@/components/DarkMode";
 import DarkModeToggle from "@/components/layout/DarkModeToggle";
 import ScrollProgressBar from "@/components/layout/ScrollProgressBar";
 import { useSpyElem } from "@/hooks/useSpy";
-import { cn } from "@/lib/utils";
 import icon from "@/public/icon/stone_icon.png";
-
-const navList = [
-  { name: "Eat-Stone", href: "/blog" },
-  { name: "About", href: "/about" },
-  { name: "Knowledge", href: "/knowledge" },
-  { name: "Moral", href: "/moral" },
-  { name: "Body", href: "/body" },
-];
-
-// const localePathList = ["/about"];
+import { cn } from "@/utils/cn";
 
 const Nav = () => {
   const { ref, marginTop } = useSpyElem(65);
   const pathname = usePathname();
-
-  // console.log("pathname: ", pathname);
-  // const isLocalePath = localePathList.some((path) => pathname.startsWith(path));
+  const navList = [
+    { name: "지(智)", href: "/knowledge" },
+    { name: "덕(德)", href: "/moral" },
+    { name: "체(體)", href: "/body" },
+  ];
 
   return (
     <nav
       style={{ marginTop }}
       ref={ref}
-      className="fixed top-0 z-20 flex w-full justify-center border-b shadow-md print:hidden"
+      className="fixed top-0 z-20 flex w-full justify-center border-b bg-background shadow-md print:hidden"
     >
       <ScrollProgressBar />
       <div className="post mt-1 flex h-16 items-center justify-between">
-        <div className="flex items-center gap-2 font-medium">
+        <section>
           <Link
             href={"/"}
-            className="h-5 w-7"
+            className="group flex items-center gap-1"
           >
             <Image
               src={icon}
               alt="icon"
-              className="h-5 w-7"
+              className="h-5 w-7 transition-transform duration-300 group-hover:-rotate-45"
             />
+            <h1 className="text-lg font-bold transition-colors duration-300 group-hover:text-muted group-hover:delay-100">
+              <span className="relative hidden 2sm:block">
+                Eat-Stone
+                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-muted transition-all duration-700 group-hover:w-full group-hover:delay-100"></span>
+              </span>
+            </h1>
           </Link>
-
+        </section>
+        <section className="absolute left-1/2 flex -translate-x-1/2 transform items-center font-medium">
           {navList.map((navItem) => (
             <Link
               href={navItem.href}
               key={navItem.name}
               className={cn(
-                "hover:text-primary rounded-full px-4 py-1 text-center text-sm transition-colors",
+                "rounded-full px-2 py-1 text-center text-sm transition-colors sm:px-4 lg:text-base",
                 pathname?.startsWith(navItem.href) ? "text-primary bg-muted font-medium" : "text-muted-foreground"
               )}
             >
               {navItem.name}
             </Link>
           ))}
-        </div>
+        </section>
 
-        {/* {isLocalePath && <LanguageSelector className="hidden sm:flex" />} */}
-
-        <div className="flex gap-3">
+        <section className="flex">
+          <Link
+            href={"/about"}
+            className="hidden px-4 py-1 text-center text-sm 2sm:block"
+          >
+            About
+          </Link>
           <DarkModeToggle />
-        </div>
+        </section>
       </div>
     </nav>
   );
