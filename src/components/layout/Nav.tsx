@@ -7,8 +7,8 @@ import { usePathname } from "next/navigation";
 import DarkModeToggle from "@/components/layout/DarkModeToggle";
 import ScrollProgressBar from "@/components/layout/ScrollProgressBar";
 import { useSpyElem } from "@/hooks/useSpy";
-import { cn } from "@/lib/utils";
 import icon from "@/public/icon/stone_icon.png";
+import { cn } from "@/utils/cn";
 
 const Nav = () => {
   const { ref, marginTop } = useSpyElem(65);

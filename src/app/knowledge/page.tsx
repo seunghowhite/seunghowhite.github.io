@@ -1,8 +1,13 @@
-import Link from "next/link";
+import { Metadata } from "next";
 
 import CategoryList from "@/components/category/CategoryList";
 import PostList from "@/components/post_list/PostList";
-import { getCategoryCounts, getCategoryList, getSubCategoryPosts } from "@/utils/post";
+import { getMetadata } from "@/utils/metadata";
+import { getCategoryCounts, getSubCategoryPosts } from "@/utils/post";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getMetadata({ asPath: `/knowledge`, keywords: ["knowledge", "지식", "개발"], ogImage: `/knowledge/test` });
+}
 
 export default async function KnowlegePage() {
   const subject = "knowledge";
