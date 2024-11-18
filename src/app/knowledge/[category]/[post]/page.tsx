@@ -1,4 +1,5 @@
 // /knowledge/[subtitle]/page.tsx 파일
+import FloatingButton from "@/components/etc/FloatingButton";
 import { PostBody } from "@/components/post_detail/PostBody";
 import PostHeader from "@/components/post_detail/PostHeader";
 import TocSidebar from "@/components/post_detail/TableOfContentSidebar";
@@ -40,7 +41,7 @@ export default async function PostPage({ params: { category, post } }: Props) {
       </article>
       <hr />
 
-      {/* <FloatingButton /> */}
+      <FloatingButton />
     </section>
   );
 }

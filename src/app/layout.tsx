@@ -24,6 +24,7 @@ export default function RootLayout({
           <Nav />
           <main className="mt-[70px] flex flex-1 flex-col">{children}</main>
           <Footer />
+          <div id="toast-root" />
         </Providers>
         {/* <Toaster />
         <Analytics />

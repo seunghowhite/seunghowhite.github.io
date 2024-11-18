@@ -24,7 +24,7 @@ const TableOfContentTop = ({ toc }: Props) => {
           >
             <Link
               href={item.link}
-              className="underline-offset-4 hover:text-pink-600"
+              className="underline-offset-4 hover:text-blue-600"
             >
               {item.text}
             </Link>

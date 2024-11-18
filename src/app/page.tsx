@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <section className="post flex flex-col items-center gap-12 px-4 py-8">
       {/* 이미지 섹션 */}
-      <div className="relative aspect-square w-full max-w-[200px] overflow-hidden rounded-lg sm:max-w-[300px]">
+      <div className="relative ml-14 aspect-square w-full max-w-[200px] overflow-hidden sm:ml-24 sm:max-w-[300px]">
         <Image
           src={stonTower}
           alt="Stone Tower"

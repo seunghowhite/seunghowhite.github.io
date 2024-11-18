@@ -36,6 +36,7 @@ const config: Config = {
           foreground: "var(--warning-foreground)",
         },
       },
+
       typography: {
         DEFAULT: {
           css: {
@@ -105,8 +106,8 @@ const config: Config = {
             },
 
             ".dark pre": {
-              backgroundColor: "var(--shiki-dark-bg)",
               color: "var(--shiki-dark)",
+              backgroundColor: "var(--shiki-dark-bg)",
               border: "1px solid #374151",
             },
 
@@ -154,6 +155,31 @@ const config: Config = {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      keyframes: {
+        fadein: {
+          "0%": {
+            opacity: "0.5",
+            transform: "translateY(-10px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        fadeout: {
+          "0%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translateY(-10px)",
+          },
+        },
+      },
+      animation: {
+        fadein: "fadein 0.5s",
+        fadeout: "fadeout 1s",
       },
     },
   },

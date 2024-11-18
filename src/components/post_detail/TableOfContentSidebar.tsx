@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+import { CopyLink, ScrollToComment, ScrollToTop } from "@/components/etc/UtilsButtons";
 // import CopyLinkButton from "../common/CopyLinkButton";
 // import { ScrollToComment, ScrollTop } from "../common/TocButtons";
 import { HeadingItem } from "@/config/types";
@@ -36,9 +37,9 @@ const TableOfContent = ({ toc }: Props) => {
           </ul>
         </div>
         <div className="flex gap-2">
-          {/* <ScrollTop />
+          <ScrollToTop />
           <ScrollToComment />
-          <CopyLinkButton /> */}
+          <CopyLink />
         </div>
       </div>
     </aside>

@@ -69,7 +69,7 @@ export default function PostList({ postList }: Props) {
             {/* 모바일 버전 */}
             <Link
               href={post.url}
-              className="md:hidden"
+              className="flex md:hidden"
             >
               <div className="flex flex-1 flex-col justify-between p-4 pt-1">
                 <div>
