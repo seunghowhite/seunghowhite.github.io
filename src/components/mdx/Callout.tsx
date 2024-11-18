@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 
-import * as Icon from "@/components/mdx/CalloutIcons";
+import * as Icon from "@/components/Icons/CalloutIcons";
 import { cn } from "@/utils/cn";
 
 type CalloutType = "info" | "warn" | "danger" | "normal";
