@@ -3,12 +3,11 @@ import React from "react";
 import Link from "next/link";
 
 import Select from "@/components/ui/Select";
-import { Subject } from "@/utils/post";
 import titleCase from "@/utils/titleCase";
 
 interface Props {
   list: { [key: string]: number };
-  subject: Subject;
+  subject: string;
   targetCategory: string | null;
 }
 

@@ -6,13 +6,12 @@ import Link from "next/link";
 
 import IconThinArrow from "@/components/Icons/ArrowThin";
 import IconCheck from "@/components/Icons/Check";
-import { Subject } from "@/utils/post";
 import titleCase from "@/utils/titleCase";
 
 interface SelectItemProps {
   category: string;
   count: number;
-  subject: Subject;
+  subject: string;
   targetCategory: string | null;
   setIsOpen: (open: boolean) => void;
 }
@@ -39,7 +38,7 @@ const SelectItem = ({ category, count, subject, targetCategory, setIsOpen }: Sel
 
 interface SelectProps {
   list: [string, number][];
-  subject: Subject;
+  subject: string;
   targetCategory: string | null;
 }
 
