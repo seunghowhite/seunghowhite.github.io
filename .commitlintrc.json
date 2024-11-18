@@ -16,6 +16,7 @@
       "always",
       [
         "FEAT",
+        "PACKAGE",
         "FIX",
         "DESIGN",
         "STYLE",

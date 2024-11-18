@@ -25,7 +25,6 @@
     "react-dom": "^18",
     "reading-time": "^1.5.0",
     "rehype-pretty-code": "^0.14.0",
-    "shikiji": "^0.10.2",
     "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {

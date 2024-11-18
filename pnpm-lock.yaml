@@ -44,9 +44,6 @@ dependencies:
   rehype-pretty-code:
     specifier: ^0.14.0
     version: 0.14.0(shiki@1.23.0)
-  shikiji:
-    specifier: ^0.10.2
-    version: 0.10.2
   tailwind-merge:
     specifier: ^2.5.4
     version: 2.5.4
@@ -4898,18 +4895,6 @@ packages:
       '@shikijs/types': 1.23.0
       '@shikijs/vscode-textmate': 9.3.0
       '@types/hast': 3.0.4
-    dev: false
-
-  /shikiji-core@0.10.2:
-    resolution: {integrity: sha512-9Of8HMlF96usXJHmCL3Gd0Fcf0EcyJUF9m8EoAKKd98mHXi0La2AZl1h6PegSFGtiYcBDK/fLuKbDa1l16r1fA==}
-    deprecated: Shikiji is merged back to Shiki v1.0, please migrate over to get the latest updates
-    dev: false
-
-  /shikiji@0.10.2:
-    resolution: {integrity: sha512-wtZg3T0vtYV2PnqusWQs3mDaJBdCPWxFDrBM/SE5LfrX92gjUvfEMlc+vJnoKY6Z/S44OWaCRzNIsdBRWcTAiw==}
-    deprecated: Shikiji is merged back to Shiki v1.0, please migrate over to get the latest updates
-    dependencies:
-      shikiji-core: 0.10.2
     dev: false
 
   /side-channel@1.0.6:
