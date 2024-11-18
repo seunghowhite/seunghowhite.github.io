@@ -45,7 +45,7 @@ export default function useToast(setToastEnd?: React.Dispatch<React.SetStateActi
         {toastList.map((toast) => (
           <div
             key={toast.id}
-            className={`rounded-md px-4 py-2 text-white shadow-md ${toast.isRemoving ? "animate-fadeout" : "animate-fadein"}
+            className={`rounded-md px-4 py-2 shadow-md ${toast.isRemoving ? "animate-fadeout" : "animate-fadein"}
             ${toast.type === "success" ? "bg-background" : toast.type === "alert" ? "bg-red-500" : "bg-gray-800"}`}
           >
             {toast.message}

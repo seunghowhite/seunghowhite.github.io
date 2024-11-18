@@ -3,14 +3,15 @@
 import Link from "next/link";
 
 import { CopyLink, ScrollToComment, ScrollToTop } from "@/components/etc/UtilsButtons";
-// import CopyLinkButton from "../common/CopyLinkButton";
-// import { ScrollToComment, ScrollTop } from "../common/TocButtons";
-import { HeadingItem } from "@/config/types";
 import { useHeadingsObserver } from "@/hooks/useHeadingsObserver";
 import { cn } from "@/utils/cn";
 
 interface Props {
-  toc: HeadingItem[];
+  toc: {
+    text: string;
+    link: string;
+    indent: number;
+  }[];
 }
 
 const TableOfContent = ({ toc }: Props) => {

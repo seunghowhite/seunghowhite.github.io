@@ -67,6 +67,7 @@ export const CopyLink = ({ className, url }: { className?: string; url?: string 
         showToast({ message: "클립보드에 복사되었어요", type: "success" });
       }
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(e);
     }
   };

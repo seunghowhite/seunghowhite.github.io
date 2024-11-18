@@ -9,7 +9,7 @@ interface PostList {
   category: string;
   thumbnail: string;
   title: string;
-  desc: string;
+  description: string;
   readingMinutes: number;
   date: string;
   url: string;
@@ -51,7 +51,7 @@ export default function PostList({ postList }: Props) {
                     <h2 className="mb-3 mt-1 text-lg font-bold sm:text-xl md:text-lg">{titleCase(post.title)}</h2>
                     <div className="font-bold text-blue-600">{titleCase(post.category)}</div>
                   </div>
-                  <h3 className="mb-2 line-clamp-2 h-12">{titleCase(post.desc)}</h3>
+                  <h3 className="mb-2 line-clamp-2 h-12">{titleCase(post.description)}</h3>
                 </div>
                 <div className="flex justify-between gap-3 text-sm text-gray-500 dark:text-gray-400">
                   <div className="flex items-center gap-1">
@@ -77,7 +77,7 @@ export default function PostList({ postList }: Props) {
                     <h2 className="mb-3 mt-1 text-lg font-bold sm:text-xl md:text-lg">{titleCase(post.title)}</h2>
                     <div className="font-bold text-blue-600">{titleCase(post.category)}</div>
                   </div>
-                  <h3 className="mb-2 line-clamp-2 h-12">{titleCase(post.desc)}</h3>
+                  <h3 className="mb-2 line-clamp-2 h-12">{titleCase(post.description)}</h3>
                 </div>
                 <div className="flex justify-between gap-3 text-sm text-gray-500 dark:text-gray-400">
                   <div className="flex items-center gap-1">
