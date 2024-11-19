@@ -1,1 +1,0 @@
-self.__SSG_MANIFEST=new Set(["\u002Fbody\u002F[category]","\u002Fbody\u002F[category]\u002F[post]","\u002Fknowledge\u002F[category]","\u002Fknowledge\u002F[category]\u002F[post]","\u002Fmoral\u002F[category]","\u002Fmoral\u002F[category]\u002F[post]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
