@@ -1,11 +1,13 @@
 import { Metadata } from "next";
 
-export const META = {
+export const BASE_URL = "https://seunghowhite.github.io";
+
+const META = {
   title: "백승호의 블로그",
   siteName: "프론트엔드 개발자 백승호의 블로그",
   description: "지덕체 기반으로 기록을 합니다",
   keyword: ["백승호", "eat-stone", "seunghowhite", "stone"],
-  url: "https://seunghowhite.github.io",
+  url: BASE_URL,
   googleVerification: "xxx",
   naverVerification: "xxx",
   ogImage: "/thumbnail.png",
@@ -18,6 +20,7 @@ interface generateMetadataProps {
   asPath?: string;
   ogImage?: string;
 }
+
 export const getMetadata = (metadataProps: generateMetadataProps) => {
   const { title, description, asPath, ogImage, keywords } = metadataProps || {};
 

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 
 import Footer from "@/components/layout/Footer";
 import Nav from "@/components/layout/Nav";
+import Providers from "@/config/Providers";
 import "@/config/globals.css";
-import Providers from "@/lib/Providers";
 import { getMetadata } from "@/utils/metadata";
 
 export const metadata: Metadata = getMetadata({});
@@ -24,10 +24,9 @@ export default function RootLayout({
           <Nav />
           <main className="mt-[70px] flex flex-1 flex-col">{children}</main>
           <Footer />
+          <div id="toast-root" />
         </Providers>
-        {/* <Toaster />
-        <Analytics />
-        <SpeedInsights />
+        {/* 
         <GoogleAnalytics gaId="G-TRBVGE9TYP" />
         <GoogleTagManager gtmId="G-TRBVGE9TYP" /> */}
       </body>
