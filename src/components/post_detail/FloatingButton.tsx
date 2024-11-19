@@ -3,9 +3,8 @@
 import { useState } from "react";
 
 import IconSetting from "@/components/Icons/Setting";
-import { CopyLink, ScrollToComment, ScrollToTop, UtilButton } from "@/components/etc/UtilsButtons";
+import { CopyLink, ScrollToComment, ScrollToTop, UtilButton } from "@/components/post_detail/UtilsButtons";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
-import useToast from "@/hooks/useToast";
 import { cn } from "@/utils/cn";
 
 const FloatingButton = () => {

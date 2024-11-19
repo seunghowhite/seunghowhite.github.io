@@ -1,7 +1,7 @@
 // /knowledge/[subtitle]/page.tsx 파일
 import { Metadata } from "next";
 
-import CategoryList from "@/components/category/CategoryList";
+import CategoryList from "@/components/post_list/CategoryList";
 import PostList from "@/components/post_list/PostList";
 import { getMetadata } from "@/utils/metadata";
 import { getCategoryCounts, getPostList, getStaticParams } from "@/utils/posts";

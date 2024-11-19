@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Callout } from "@/components/mdx/Callout";
 import { Image } from "@/components/mdx/Image";
 import { ExternalLink } from "@/components/mdx/Link";

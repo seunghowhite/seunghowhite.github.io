@@ -1,7 +1,7 @@
 // /knowledge/[subtitle]/page.tsx 파일
 import { Metadata } from "next";
 
-import FloatingButton from "@/components/etc/FloatingButton";
+import FloatingButton from "@/components/post_detail/FloatingButton";
 import Giscus from "@/components/post_detail/Giscus";
 import { PostBody } from "@/components/post_detail/PostBody";
 import PostHeader from "@/components/post_detail/PostHeader";

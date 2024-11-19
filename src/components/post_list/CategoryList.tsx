@@ -2,7 +2,7 @@ import React from "react";
 
 import Link from "next/link";
 
-import Select from "@/components/ui/Select";
+import CategorySelect from "@/components/post_list/CategorySelect";
 import titleCase from "@/utils/titleCase";
 
 interface Props {
@@ -33,7 +33,7 @@ export default function CategoryList({ list, subject, targetCategory }: Props) {
         </ul>
       </section>
       <section className="my-6 px-2 md:hidden">
-        <Select
+        <CategorySelect
           list={cglist}
           subject={subject}
           targetCategory={targetCategory}

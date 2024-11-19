@@ -1,13 +1,10 @@
-import React, { Dispatch, SetStateAction, forwardRef, useState } from "react";
+import React, { forwardRef, useState } from "react";
 
 import IconCheck from "@/components/Icons/Check";
 import IconComment from "@/components/Icons/Comment";
 import IconCopy from "@/components/Icons/Copy";
 import IconTotop from "@/components/Icons/ToTop";
-import useInterval from "@/hooks/useInterval";
-import { useOutsideClick } from "@/hooks/useOutsideClick";
 import useToast from "@/hooks/useToast";
-import useWatchTimeout from "@/hooks/useWatchTimeout";
 
 interface Props {
   onClick: () => void;

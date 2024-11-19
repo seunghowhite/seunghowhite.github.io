@@ -42,7 +42,7 @@ interface SelectProps {
   targetCategory: string | null;
 }
 
-export default function Select({ list, subject, targetCategory }: SelectProps) {
+export default function CategorySelect({ list, subject, targetCategory }: SelectProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   // 메뉴 토글 함수

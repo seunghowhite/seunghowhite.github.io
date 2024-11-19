@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import stonTower from "@/public/home/stone_tower.png";
 
@@ -27,15 +28,30 @@ export default function HomePage() {
         </p>
 
         <div className="flex flex-col items-start gap-2 text-gray-700 dark:text-gray-300 sm:text-lg">
-          <p>
-            <strong className="text-blue-600 sm:text-3xl">지:</strong> 개발 관련 내용을 담고 있습니다.
-          </p>
-          <p>
-            <strong className="text-blue-600 sm:text-3xl">덕:</strong> 일상생활에서 얻는 생각을 기록합니다.
-          </p>
-          <p>
-            <strong className="text-blue-600 sm:text-3xl">체:</strong> 몸을 가꾸는 기록을 담았습니다.
-          </p>
+          <Link
+            href={"/knowledge"}
+            className="underline-offset-4 hover:underline"
+          >
+            <p>
+              <strong className="text-blue-600 sm:text-3xl">지:</strong> 개발 관련 내용을 담고 있습니다.
+            </p>
+          </Link>
+          <Link
+            href={"/moral"}
+            className="underline-offset-4 hover:underline"
+          >
+            <p>
+              <strong className="text-blue-600 sm:text-3xl">덕:</strong> 일상생활에서 얻는 생각을 기록합니다.
+            </p>
+          </Link>
+          <Link
+            href={"/body"}
+            className="underline-offset-4 hover:underline"
+          >
+            <p>
+              <strong className="text-blue-600 sm:text-3xl">체:</strong> 몸을 가꾸는 기록을 담았습니다.
+            </p>
+          </Link>
         </div>
       </div>
     </section>

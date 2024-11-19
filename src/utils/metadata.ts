@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
-import { BASE_URL } from "@/config/info";
+export const BASE_URL = "https://seunghowhite.github.io";
 
-export const META = {
+const META = {
   title: "백승호의 블로그",
   siteName: "프론트엔드 개발자 백승호의 블로그",
   description: "지덕체 기반으로 기록을 합니다",
@@ -20,6 +20,7 @@ interface generateMetadataProps {
   asPath?: string;
   ogImage?: string;
 }
+
 export const getMetadata = (metadataProps: generateMetadataProps) => {
   const { title, description, asPath, ogImage, keywords } = metadataProps || {};
 

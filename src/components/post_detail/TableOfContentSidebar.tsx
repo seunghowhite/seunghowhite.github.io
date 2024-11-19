@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { CopyLink, ScrollToComment, ScrollToTop } from "@/components/etc/UtilsButtons";
+import { CopyLink, ScrollToComment, ScrollToTop } from "@/components/post_detail/UtilsButtons";
 import { useHeadingsObserver } from "@/hooks/useHeadingsObserver";
 import { cn } from "@/utils/cn";
 
