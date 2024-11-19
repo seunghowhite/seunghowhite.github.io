@@ -2,6 +2,7 @@
 import { Metadata } from "next";
 
 import FloatingButton from "@/components/etc/FloatingButton";
+import Giscus from "@/components/post_detail/Giscus";
 import { PostBody } from "@/components/post_detail/PostBody";
 import PostHeader from "@/components/post_detail/PostHeader";
 import TocSidebar from "@/components/post_detail/TableOfContentSidebar";
@@ -36,7 +37,6 @@ export async function generateMetadata({ params: { subject, category, post } }: 
 
 export default async function PostPage({ params: { subject, category, post } }: ParamType) {
   const { content, title, date, readingMinutes } = getPostDetailData({ subject, category, post });
-
   const toc = parseToc(content);
 
   return (
@@ -54,7 +54,7 @@ export default async function PostPage({ params: { subject, category, post } }: 
         <PostBody content={content} />
       </article>
       <hr />
-
+      <Giscus />
       <FloatingButton />
     </section>
   );
