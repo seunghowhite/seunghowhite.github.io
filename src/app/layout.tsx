@@ -2,31 +2,11 @@ import type { Metadata } from "next";
 
 import Footer from "@/components/layout/Footer";
 import Nav from "@/components/layout/Nav";
-import { baseDomain, blogDesc, blogName, blogThumbnailURL, icon } from "@/config/const";
+import Providers from "@/config/Providers";
 import "@/config/globals.css";
-import Providers from "@/lib/Providers";
+import { getMetadata } from "@/utils/metadata";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(baseDomain),
-  title: blogName,
-  description: blogDesc,
-  icons: {
-    icon: icon,
-  },
-  openGraph: {
-    title: blogName,
-    description: blogDesc,
-    siteName: blogName,
-    images: [blogThumbnailURL],
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: blogName,
-    description: blogDesc,
-    images: [blogThumbnailURL],
-  },
-};
+export const metadata: Metadata = getMetadata({});
 
 export default function RootLayout({
   children,
@@ -44,10 +24,9 @@ export default function RootLayout({
           <Nav />
           <main className="mt-[70px] flex flex-1 flex-col">{children}</main>
           <Footer />
+          <div id="toast-root" />
         </Providers>
-        {/* <Toaster />
-        <Analytics />
-        <SpeedInsights />
+        {/* 
         <GoogleAnalytics gaId="G-TRBVGE9TYP" />
         <GoogleTagManager gtmId="G-TRBVGE9TYP" /> */}
       </body>

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 
 import Dark from "@/components/Icons/Dark";
 import Light from "@/components/Icons/Light";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import { useTheme } from "next-themes";
 
 const DarkModeToggle = () => {
