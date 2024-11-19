@@ -77,7 +77,7 @@ const parsePostData = (filePath: string) => {
   };
 };
 
-// getPostDetailData 함수
+// getPostList 함수
 export const getPostDetailData = ({ subject, category, post }: { subject: string; category: string; post: string }) => {
   const globPath = category
     ? `${POSTS_PATH}/${subject}/${category}/${post}/*.mdx`
@@ -97,23 +97,35 @@ export const getPostDetailData = ({ subject, category, post }: { subject: string
     keywords,
   };
 };
+export const getPostList = async (subject?: string, category?: string) => {
+  // globPath 수정된 부분
+  const globPath = !subject
+    ? `${POSTS_PATH}/**/**/**/*.mdx`
+    : category
+      ? `${POSTS_PATH}/${subject}/${category}/**/*.mdx`
+      : `${POSTS_PATH}/${subject}/**/**/*.mdx`;
 
-// getPostList 함수
-export const getPostList = (subject: string, category?: string) => {
-  const globPath = category ? `${POSTS_PATH}/${subject}/${category}/**/*.mdx` : `${POSTS_PATH}/${subject}/**/**/*.mdx`;
   const postPaths: string[] = sync(globPath);
 
+  // postPaths를 순회하며 포스트 데이터 추출
   return postPaths
     .map((postPath) => {
       const pathParts = postPath.split(path.sep);
-      const categoryPath = pathParts[pathParts.indexOf(subject) + 1]; // 하위 카테고리 추출
-      const post = pathParts[pathParts.indexOf(categoryPath) + 1]; // 슬러그 추출
-      const url = `/${subject}/${categoryPath}/${post}`; // URL 생성
 
-      const { thumbnail, title, description, readingMinutes, date } = parsePostData(postPath); // 유틸리티 함수 재사용
+      // subjectPath 추출 (subject가 없을 경우 자동 추출)
+      const subjectPath = subject || pathParts[7]; // 서브젝트 추출
+      const subjectIndex = pathParts.indexOf(subjectPath);
+
+      const categoryPath = pathParts[subjectIndex + 1] || ""; // 카테고리 추출
+      const post = pathParts[subjectIndex + 2] || ""; // 포스트 추출
+      // URL 생성
+      const url = `/${subjectPath}/${categoryPath}/${post}`;
+
+      // 포스트 데이터를 파싱
+      const { thumbnail, title, description, readingMinutes, date } = parsePostData(postPath);
 
       return {
-        category: titleCase(categoryPath), // 추출된 하위 카테고리
+        category: titleCase(categoryPath),
         thumbnail,
         title,
         description,
@@ -146,13 +158,3 @@ export const parseToc = (content: string) => {
     })) || []
   );
 };
-//?
-// export const getSitemapPostList = async () => {
-//   const postList = await getPostList();
-//   const baseUrl = "";
-//   const sitemapPostList = postList.map(({ url }) => ({
-//     lastModified: new Date(),
-//     url: `${baseUrl}${url}`,
-//   }));
-//   return sitemapPostList;
-// };

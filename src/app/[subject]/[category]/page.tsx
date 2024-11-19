@@ -24,7 +24,7 @@ export async function generateMetadata({ params: { subject, category } }: ParamT
 // 페이지 컴포넌트
 export default async function CategoryPage({ params: { subject, category } }: ParamType) {
   const categoryCountList = getCategoryCounts(subject);
-  const postList = getPostList(subject, category);
+  const postList = await getPostList(subject, category);
 
   return (
     <div>

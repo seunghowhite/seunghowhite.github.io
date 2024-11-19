@@ -1,11 +1,13 @@
 import { Metadata } from "next";
 
+import { BASE_URL } from "@/config/info";
+
 export const META = {
   title: "백승호의 블로그",
   siteName: "프론트엔드 개발자 백승호의 블로그",
   description: "지덕체 기반으로 기록을 합니다",
   keyword: ["백승호", "eat-stone", "seunghowhite", "stone"],
-  url: "https://seunghowhite.github.io",
+  url: BASE_URL,
   googleVerification: "xxx",
   naverVerification: "xxx",
   ogImage: "/thumbnail.png",

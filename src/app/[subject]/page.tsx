@@ -25,7 +25,8 @@ export async function generateMetadata({ params: { subject } }: ParamType): Prom
 
 export default async function SubjectPage({ params: { subject } }: ParamType) {
   const categoryCountList = getCategoryCounts(subject);
-  const postList = getPostList(subject);
+  const postList = await getPostList(subject);
+
   return (
     <div>
       <CategoryList
