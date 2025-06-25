@@ -9,7 +9,12 @@
  *
  */
 
-export default function titleCase(str: string) {
+export default function titleCase(str: string | undefined | null) {
+  // undefined, null, 빈 문자열 체크
+  if (!str || typeof str !== "string") {
+    return "";
+  }
+
   return str
     .toLowerCase()
     .replace(/(^|\s)\S/g, (L) => L.toUpperCase())
