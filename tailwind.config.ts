@@ -43,9 +43,21 @@ const config: Config = {
             "h2, h3, h4": {
               scrollMarginTop: "5rem",
             },
+
+            h2: {
+              fontSize: "1.75rem",
+              fontWeight: "700",
+              lineHeight: "2rem",
+            },
+
+            h3: {
+              fontSize: "1.5rem",
+              fontWeight: "600",
+              lineHeight: "1.75rem",
+            },
             p: {
-              marginTop: "2rem",
-              marginBottom: "2rem",
+              marginTop: "0.5rem",
+              marginBottom: "0.5rem",
             },
             ".callout-contents > p": {
               margin: 0,
@@ -139,6 +151,10 @@ const config: Config = {
               textUnderlineOffset: "4px",
               textDecorationThickness: 1,
               fontWeight: 600,
+            },
+            "ul, ol": {
+              marginTop: "0.25rem",
+              marginBottom: "0.25rem",
             },
           },
         },

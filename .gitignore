@@ -6,6 +6,11 @@
 .pnp.js
 .yarn/install-state.gz
 
+
+
+# sample folder
+/sample
+
 # testing
 /coverage
 
