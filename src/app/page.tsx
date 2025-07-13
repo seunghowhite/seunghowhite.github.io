@@ -33,7 +33,13 @@ export default function HomePage() {
             className="underline-offset-4 hover:underline"
           >
             <p>
-              <strong className="text-blue-600 sm:text-3xl">지:</strong> 개발 관련 내용을 담고 있습니다.
+              <strong
+                className="sm:text-3xl"
+                style={{ color: "#4A9ED4" }}
+              >
+                지:
+              </strong>
+              개발 관련 내용을 담고 있습니다.
             </p>
           </Link>
           <Link
@@ -41,7 +47,13 @@ export default function HomePage() {
             className="underline-offset-4 hover:underline"
           >
             <p>
-              <strong className="text-blue-600 sm:text-3xl">덕:</strong> 일상생활에서 얻는 생각을 기록합니다.
+              <strong
+                className="sm:text-3xl"
+                style={{ color: "#F5A45D" }}
+              >
+                덕:
+              </strong>
+              일상생활에서 얻는 생각을 기록합니다.
             </p>
           </Link>
           <Link
@@ -49,7 +61,13 @@ export default function HomePage() {
             className="underline-offset-4 hover:underline"
           >
             <p>
-              <strong className="text-blue-600 sm:text-3xl">체:</strong> 몸을 가꾸는 기록을 담았습니다.
+              <strong
+                className="sm:text-3xl"
+                style={{ color: "#E97362" }}
+              >
+                체:
+              </strong>
+              몸을 가꾸는 기록을 담았습니다.
             </p>
           </Link>
         </div>

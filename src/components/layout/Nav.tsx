@@ -14,9 +14,9 @@ const Nav = () => {
   const { ref, marginTop } = useSpyElem(65);
   const pathname = usePathname();
   const navList = [
-    { name: "지(智)", href: "/knowledge" },
-    { name: "덕(德)", href: "/moral" },
-    { name: "체(體)", href: "/body" },
+    { name: "지(智)", href: "/knowledge", color: "#4A9ED4" },
+    { name: "덕(德)", href: "/moral", color: "#F5A45D" },
+    { name: "체(體)", href: "/body", color: "#E97362" },
   ];
 
   return (
@@ -45,15 +45,21 @@ const Nav = () => {
             </h1>
           </Link>
         </section>
-        <section className="absolute left-1/2 flex -translate-x-1/2 transform items-center font-medium">
+        <section className="absolute left-1/2 flex -translate-x-1/2 transform items-center gap-2 font-medium">
           {navList.map((navItem) => (
             <Link
               href={navItem.href}
               key={navItem.name}
-              className={cn(
-                "rounded-full px-2 py-1 text-center text-sm transition-colors sm:px-4 lg:text-base",
-                pathname?.startsWith(navItem.href) ? "text-primary bg-muted font-medium" : "text-muted-foreground"
-              )}
+              className="rounded-full border-2 px-2 py-1 text-center text-sm transition-colors sm:px-4 lg:text-base"
+              style={
+                pathname?.startsWith(navItem.href)
+                  ? {
+                      background: navItem.color + "22", // 투명도 13% 배경
+                      borderColor: navItem.color,
+                      color: navItem.color,
+                    }
+                  : { color: navItem.color }
+              }
             >
               {navItem.name}
             </Link>
