@@ -2,10 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://seunghowhite.github.io</loc>
-<lastmod>2025-06-25T13:51:05.523Z</lastmod>
+<lastmod>2025-07-13T08:11:14.027Z</lastmod>
+</url>
+<url>
+<loc>https://seunghowhite.github.io//_posts/body/running</loc>
+<lastmod>2025-07-13T00:00:00.000Z</lastmod>
 </url>
 <url>
 <loc>https://seunghowhite.github.io//_posts/knowledge/next.js</loc>
+<lastmod>2025-06-25T00:00:00.000Z</lastmod>
+</url>
+<url>
+<loc>https://seunghowhite.github.io//_posts/body/running</loc>
 <lastmod>2025-06-25T00:00:00.000Z</lastmod>
 </url>
 <url>
@@ -19,9 +27,5 @@
 <url>
 <loc>https://seunghowhite.github.io//_posts/knowledge/computer-science</loc>
 <lastmod>2025-01-27T00:00:00.000Z</lastmod>
-</url>
-<url>
-<loc>https://seunghowhite.github.io//_posts/body/sampleCategroy</loc>
-<lastmod>2025-01-01T00:00:00.000Z</lastmod>
 </url>
 </urlset>
