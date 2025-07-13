@@ -142,19 +142,39 @@ export const parseToc = (content: string) => {
   const regex = /^(##|###) (.*$)/gim;
   const headingList = content.match(regex);
   return (
-    headingList?.map((heading: string) => ({
-      text: heading.replace("##", "").replace("#", ""),
-      link:
-        "#" +
-        heading
-          .replace("# ", "")
-          .replace("#", "")
-          // eslint-disable-next-line no-useless-escape
-          .replace(/[\[\]:!@#$/%^&*()+=,.]/g, "")
-          .replace(/ /g, "-")
-          .toLowerCase()
-          .replace("?", ""),
-      indent: (heading.match(/#/g)?.length || 2) - 2,
-    })) || []
+    headingList?.map((heading: string) => {
+      // 전체 제목에서 ## 또는 ### 제거
+      let cleanText = heading.replace(/^##\s*/, "").replace(/^###\s*/, "");
+
+      // div 태그가 있으면 안의 텍스트만 추출 (더 강력한 정규식)
+      const textMatch = cleanText.match(/<div[^>]*className="[^"]*"[^>]*>(.*?)<\/div>/);
+      if (textMatch) {
+        cleanText = textMatch[1];
+      } else {
+        // className이 없는 div 태그도 처리
+        const simpleTextMatch = cleanText.match(/<div[^>]*>(.*?)<\/div>/);
+        if (simpleTextMatch) {
+          cleanText = simpleTextMatch[1];
+        }
+      }
+
+      // text 필드에서도 # 기호 제거
+      cleanText = cleanText.replace(/#/g, "").trim();
+
+      return {
+        text: cleanText,
+        link:
+          "#" +
+          cleanText
+            .replace("# ", "")
+            .replace("#", "")
+            // eslint-disable-next-line no-useless-escape
+            .replace(/[\[\]:!@#$/%^&*()+=,.]/g, "")
+            .replace(/ /g, "-")
+            .toLowerCase()
+            .replace("?", ""),
+        indent: (heading.match(/#/g)?.length || 2) - 2,
+      };
+    }) || []
   );
 };
