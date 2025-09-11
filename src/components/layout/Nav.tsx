@@ -8,15 +8,14 @@ import DarkModeToggle from "@/components/layout/DarkModeToggle";
 import ScrollProgressBar from "@/components/layout/ScrollProgressBar";
 import { useSpyElem } from "@/hooks/useSpy";
 import icon from "@/public/icon/stone_icon.png";
-import { cn } from "@/utils/cn";
 
 const Nav = () => {
   const { ref, marginTop } = useSpyElem(65);
   const pathname = usePathname();
   const navList = [
-    { name: "지(智)", href: "/knowledge", color: "#4A9ED4" },
-    { name: "덕(德)", href: "/moral", color: "#F5A45D" },
-    { name: "체(體)", href: "/body", color: "#E97362" },
+    { name: "지(智)", href: "/knowledge", color: "var(--knowledge-color)" },
+    { name: "덕(德)", href: "/moral", color: "var(--moral-color)" },
+    { name: "체(體)", href: "/body", color: "var(--body-color)" },
   ];
 
   return (

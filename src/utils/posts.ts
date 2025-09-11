@@ -13,25 +13,44 @@ const extractDirectoryAtDepth = (path: string, depthFromEnd: number) => path.spl
 export const getPostPaths = (subject?: string) => {
   const folder = subject || "**";
   const postPaths: string[] = sync(`${POSTS_PATH}/${folder}/**/**/*.mdx`);
-  return postPaths;
+  // Windows 경로 구분자를 Unix 스타일로 변환
+  return postPaths.map((path) => path.replace(/\\/g, "/"));
 };
 
 export const getStaticParams = (type: "subject" | "category" | "post") => {
   const filePaths = getPostPaths();
 
   // filePaths에서 필요한 데이터 추출
-  const staticParams = filePaths.map((path) => {
-    const [subject, category, post] = path.split("/").slice(-4, -1);
-    if (type === "subject") {
-      return { subject };
-    } else if (type === "category") {
-      return { subject, category };
-    } else if (type === "post") {
-      return { subject, category, post };
-    }
-  });
+  const staticParams = filePaths
+    .map((filePath) => {
+      const pathParts = filePath.split("/");
+      const postsIndex = pathParts.findIndex((part) => part === "_posts");
+
+      if (postsIndex === -1) return null;
+
+      const subject = pathParts[postsIndex + 1];
+      const category = pathParts[postsIndex + 2];
+      const post = pathParts[postsIndex + 3];
+
+      // 유효성 검사
+      if (!subject) return null;
+
+      if (type === "subject") {
+        return { subject };
+      } else if (type === "category") {
+        if (!category) return null;
+        return { subject, category };
+      } else if (type === "post") {
+        if (!category || !post) return null;
+        return { subject, category, post };
+      }
+      return null;
+    })
+    .filter(Boolean); // null 값 제거
+
   return staticParams;
 };
+
 // 주어진 category와 post를 가져오는 함수
 export const getCategoryPostList = (subject: string) => {
   const categoryPaths = getPostPaths(subject);
@@ -42,6 +61,7 @@ export const getCategoryPostList = (subject: string) => {
   });
   return categoryAndPostList;
 };
+
 //카태고리 header용
 export const getCategoryCounts = (subject: string) => {
   const categoryPostList = getCategoryPostList(subject);
@@ -97,6 +117,7 @@ export const getPostDetailData = ({ subject, category, post }: { subject: string
     keywords,
   };
 };
+
 export const getPostList = async (subject?: string, category?: string) => {
   // globPath 수정된 부분
   const globPath = !subject
@@ -125,6 +146,7 @@ export const getPostList = async (subject?: string, category?: string) => {
       const { thumbnail, title, description, readingMinutes, date } = parsePostData(postPath);
 
       return {
+        subject: subjectPath,
         category: titleCase(categoryPath),
         thumbnail,
         title,

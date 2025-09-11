@@ -21,7 +21,7 @@
 }
 
 :root {
-  --white: #ffffff;
+  --white: #f4f4f4;
   --black: #282832;
 
   --secondary: #e9f1f8;
@@ -46,6 +46,11 @@
   --warning-foreground: var(--black);
 
   --border: #e2e8f0;
+
+  /* 지덕체 색상 */
+  --knowledge-color: #4a9ed4;
+  --moral-color: #f5a45d;
+  --body-color: #e97362;
 }
 
 :root.dark {
@@ -62,7 +67,7 @@
   --accent: #3c4d6b;
   --accent-foreground: ;
 
-  --informative: #075985;
+  --informative: #065079;
   --informative-foreground: var(--white);
 
   --destructive: #7f1d1d;
@@ -72,4 +77,14 @@
   --warning-foreground: var(--white);
 
   --border: #3b4252;
+
+  /* 지덕체 색상 (다크모드에서도 동일) */
+  --knowledge-color: #4a9ed4;
+  --moral-color: #f5a45d;
+  --body-color: #e97362;
+}
+
+/* 목차 hover 효과 */
+a[style*="--hover-color"]:hover {
+  color: var(--hover-color) !important;
 }

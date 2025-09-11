@@ -35,11 +35,21 @@ const config: Config = {
           DEFAULT: "var(--warning)",
           foreground: "var(--warning-foreground)",
         },
+        knowledge: {
+          DEFAULT: "var(--knowledge-color)",
+        },
+        moral: {
+          DEFAULT: "var(--moral-color)",
+        },
+        body: {
+          DEFAULT: "var(--body-color)",
+        },
       },
 
       typography: {
         DEFAULT: {
           css: {
+            color: "var(--foreground)",
             "h2, h3, h4": {
               scrollMarginTop: "5rem",
             },
@@ -49,12 +59,18 @@ const config: Config = {
               fontWeight: "700",
               lineHeight: "2rem",
             },
-
+            hr: {
+              marginTop: "16px",
+              marginBottom: "16px",
+            },
             h3: {
               fontSize: "1.5rem",
               fontWeight: "600",
               lineHeight: "1.75rem",
+              marginTop: "1rem",
+              marginBottom: "0",
             },
+
             p: {
               marginTop: "0.5rem",
               marginBottom: "0.5rem",
@@ -153,8 +169,18 @@ const config: Config = {
               fontWeight: 600,
             },
             "ul, ol": {
-              marginTop: "0.25rem",
-              marginBottom: "0.25rem",
+              marginTop: "0.1rem",
+              marginBottom: "0.1rem",
+            },
+            "ul li, ol li": {
+              marginTop: "0.1rem",
+              marginBottom: "0.1rem",
+            },
+            "ul li::marker": {
+              color: "var(--foreground)",
+            },
+            "ol li::marker": {
+              color: "var(--foreground)",
             },
           },
         },

@@ -20,7 +20,7 @@ const PostHeader = ({ title, subject, category, date, readingMinutes }: Props) =
       <div className="mb-3 text-base">
         <Link
           href={`/${subject}/${category}`}
-          className="font-semibold text-blue-600 no-underline underline-offset-4 hover:underline"
+          className="font-semibold no-underline underline-offset-4 hover:underline"
         >
           {titleCase(category)}
         </Link>

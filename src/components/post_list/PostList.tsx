@@ -5,7 +5,21 @@ import IconAlarmClock from "@/components/Icons/AlarmClock";
 import IconCalendar from "@/components/Icons/Calendar";
 import titleCase from "@/utils/titleCase";
 
+const getSubjectColor = (subject: string) => {
+  switch (subject) {
+    case "knowledge":
+      return "var(--knowledge-color)";
+    case "moral":
+      return "var(--moral-color)";
+    case "body":
+      return "var(--body-color)";
+    default:
+      return "var(--foreground)";
+  }
+};
+
 interface PostList {
+  subject: string;
   category: string;
   thumbnail: string;
   title: string;
@@ -47,9 +61,14 @@ export default function PostList({ postList }: Props) {
               </div>
               <div className="flex flex-1 flex-col justify-between px-4 pb-4 pt-1">
                 <div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between gap-2">
                     <h2 className="mb-3 mt-1 text-lg font-bold sm:text-xl md:text-lg">{titleCase(post.title)}</h2>
-                    <div className="font-bold text-blue-600">{titleCase(post.category)}</div>
+                    <p
+                      className="font-bold"
+                      style={{ color: getSubjectColor(post.subject) }}
+                    >
+                      {titleCase(post.category)}
+                    </p>
                   </div>
                   <h3 className="mb-2 line-clamp-2 h-12">{titleCase(post.description)}</h3>
                 </div>
@@ -73,9 +92,14 @@ export default function PostList({ postList }: Props) {
             >
               <div className="flex flex-1 flex-col justify-between p-4 pt-1">
                 <div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between gap-2">
                     <h2 className="mb-3 mt-1 text-lg font-bold sm:text-xl md:text-lg">{titleCase(post.title)}</h2>
-                    <div className="font-bold text-blue-600">{titleCase(post.category)}</div>
+                    <p
+                      className="text-right font-bold"
+                      style={{ color: getSubjectColor(post.subject) }}
+                    >
+                      {titleCase(post.category)}
+                    </p>
                   </div>
                   <h3 className="mb-2 line-clamp-2 h-12">{titleCase(post.description)}</h3>
                 </div>

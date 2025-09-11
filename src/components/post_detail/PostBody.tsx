@@ -10,9 +10,10 @@ import remarkGfm from "remark-gfm";
 
 interface Props {
   content: string;
+  subject?: string;
 }
 
-export const PostBody = ({ content }: Props) => {
+export const PostBody = ({ content, subject }: Props) => {
   const prettyCodeOptions = {
     theme: {
       dark: "github-dark-dimmed",
@@ -28,7 +29,7 @@ export const PostBody = ({ content }: Props) => {
           rehypePlugins: [[rehypePrettyCode, prettyCodeOptions], rehypeSlug],
         },
       }}
-      components={Mdx}
+      components={Mdx(subject)}
     />
   );
 };
