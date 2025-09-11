@@ -46,6 +46,11 @@
   --warning-foreground: var(--black);
 
   --border: #e2e8f0;
+
+  /* 지덕체 색상 */
+  --knowledge-color: #4a9ed4;
+  --moral-color: #f5a45d;
+  --body-color: #e97362;
 }
 
 :root.dark {
@@ -72,4 +77,14 @@
   --warning-foreground: var(--white);
 
   --border: #3b4252;
+
+  /* 지덕체 색상 (다크모드에서도 동일) */
+  --knowledge-color: #4a9ed4;
+  --moral-color: #f5a45d;
+  --body-color: #e97362;
+}
+
+/* 목차 hover 효과 */
+a[style*="--hover-color"]:hover {
+  color: var(--hover-color) !important;
 }

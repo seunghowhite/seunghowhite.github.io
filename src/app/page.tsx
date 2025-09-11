@@ -37,7 +37,7 @@ export default function HomePage() {
               <p className="text-start">
                 <strong
                   className="sm:text-3xl"
-                  style={{ color: "#4A9ED4" }}
+                  style={{ color: "var(--knowledge-color)" }}
                 >
                   지:
                 </strong>
@@ -45,7 +45,7 @@ export default function HomePage() {
               </p>
               <CategoryPercentage
                 subject="knowledge"
-                color="#4A9ED4"
+                color="var(--knowledge-color)"
               />
             </div>
           </Link>
@@ -57,7 +57,7 @@ export default function HomePage() {
               <p className="text-start">
                 <strong
                   className="sm:text-3xl"
-                  style={{ color: "#F5A45D" }}
+                  style={{ color: "var(--moral-color)" }}
                 >
                   덕:
                 </strong>
@@ -65,7 +65,7 @@ export default function HomePage() {
               </p>
               <CategoryPercentage
                 subject="moral"
-                color="#F5A45D"
+                color="var(--moral-color)"
               />
             </div>
           </Link>
@@ -77,7 +77,7 @@ export default function HomePage() {
               <p className="text-start">
                 <strong
                   className="sm:text-3xl"
-                  style={{ color: "#E97362" }}
+                  style={{ color: "var(--body-color)" }}
                 >
                   체:
                 </strong>
@@ -85,7 +85,7 @@ export default function HomePage() {
               </p>
               <CategoryPercentage
                 subject="body"
-                color="#E97362"
+                color="var(--body-color)"
               />
             </div>
           </Link>

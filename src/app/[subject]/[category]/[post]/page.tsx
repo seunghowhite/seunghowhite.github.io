@@ -48,10 +48,19 @@ export default async function PostPage({ params: { subject, category, post } }: 
         date={date}
         readingMinutes={readingMinutes}
       />
-      <TableOfContentTop toc={toc} />
+      <TableOfContentTop
+        toc={toc}
+        subject={subject}
+      />
       <article className="relative">
-        <TocSidebar toc={toc} />
-        <PostBody content={content} />
+        <TocSidebar
+          toc={toc}
+          subject={subject}
+        />
+        <PostBody
+          content={content}
+          subject={subject}
+        />
       </article>
       <hr />
       <Giscus />

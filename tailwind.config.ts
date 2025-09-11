@@ -35,6 +35,15 @@ const config: Config = {
           DEFAULT: "var(--warning)",
           foreground: "var(--warning-foreground)",
         },
+        knowledge: {
+          DEFAULT: "var(--knowledge-color)",
+        },
+        moral: {
+          DEFAULT: "var(--moral-color)",
+        },
+        body: {
+          DEFAULT: "var(--body-color)",
+        },
       },
 
       typography: {
