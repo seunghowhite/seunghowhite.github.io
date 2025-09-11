@@ -146,6 +146,7 @@ export const getPostList = async (subject?: string, category?: string) => {
       const { thumbnail, title, description, readingMinutes, date } = parsePostData(postPath);
 
       return {
+        subject: subjectPath,
         category: titleCase(categoryPath),
         thumbnail,
         title,
