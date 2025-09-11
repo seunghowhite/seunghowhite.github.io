@@ -46,7 +46,6 @@ export default function HomePage() {
               <CategoryPercentage
                 subject="knowledge"
                 color="#4A9ED4"
-                label="지"
               />
             </div>
           </Link>
@@ -67,7 +66,6 @@ export default function HomePage() {
               <CategoryPercentage
                 subject="moral"
                 color="#F5A45D"
-                label="덕"
               />
             </div>
           </Link>
@@ -88,7 +86,6 @@ export default function HomePage() {
               <CategoryPercentage
                 subject="body"
                 color="#E97362"
-                label="체"
               />
             </div>
           </Link>

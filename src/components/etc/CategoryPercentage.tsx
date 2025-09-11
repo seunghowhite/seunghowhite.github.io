@@ -3,7 +3,6 @@ import { getCategoryCounts } from "@/utils/posts";
 interface CategoryPercentageProps {
   subject: string;
   color: string;
-  label: string;
 }
 
 // 전체 포스트 수를 계산하는 함수
@@ -15,7 +14,7 @@ const getTotalPostsCount = () => {
   return knowledgeCounts.all + moralCounts.all + bodyCounts.all;
 };
 
-export default function CategoryPercentage({ subject, color, label }: CategoryPercentageProps) {
+export default function CategoryPercentage({ subject, color }: CategoryPercentageProps) {
   const categoryCounts = getCategoryCounts(subject);
   const currentCategoryPosts = categoryCounts.all;
   const totalPosts = getTotalPostsCount();
