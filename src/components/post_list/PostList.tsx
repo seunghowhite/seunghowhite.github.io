@@ -46,6 +46,7 @@ export default function PostList({ postList }: Props) {
             <Link
               href={post.url}
               className="hidden md:block"
+              title={`${post.title}`}
             >
               <div className="relative aspect-video w-full rounded-t-md border-b">
                 <Image
@@ -89,6 +90,7 @@ export default function PostList({ postList }: Props) {
             <Link
               href={post.url}
               className="flex md:hidden"
+              title={`${post.title}`}
             >
               <div className="flex flex-1 flex-col justify-between p-4 pt-1">
                 <div>

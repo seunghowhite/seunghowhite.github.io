@@ -26,25 +26,10 @@ export const ColoredHeading = ({ level, children, subject, id, ...props }: Color
 
   const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements;
 
-  // 레벨별 크기 조정
-  const getSizeClass = (level: number) => {
-    switch (level) {
-      case 1:
-        return "text-4xl"; // h1: 큰 크기
-      case 2:
-        return "text-3xl "; // h2: 중간 크기
-      case 3:
-        return "text-lg"; // h3: 작은 크기
-      default:
-        return "font-bold";
-    }
-  };
-
   return (
     <HeadingTag
       id={id}
       style={{ color }}
-      className={getSizeClass(level)}
       {...props}
     >
       {children}

@@ -11,6 +11,7 @@ const Footer = () => {
         <Link
           href="https://github.com/seunghowhite"
           target="_blank"
+          title="Github"
         >
           <IconGithub
             className="fill-foreground transition hover:fill-blue-600"
@@ -21,6 +22,7 @@ const Footer = () => {
         <Link
           href="https://www.linkedin.com/in/eatstone"
           target="_blank"
+          title="LinkedIn"
         >
           <IconLinkedin
             className="fill-foreground transition hover:fill-blue-600"
@@ -28,7 +30,10 @@ const Footer = () => {
             width={30}
           />
         </Link>
-        <Link href="mailto:qortmdgh0320@gmail.com">
+        <Link
+          href="mailto:qortmdgh0320@gmail.com"
+          title="Mail"
+        >
           <IconMail
             className="fill-foreground transition hover:fill-blue-600"
             height={30}

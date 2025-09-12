@@ -14,7 +14,7 @@ interface ParamType {
 export async function generateStaticParams() {
   return getStaticParams("subject");
 }
-//todo subject,categroy의 모든 keywords를 다넣자
+
 export async function generateMetadata({ params: { subject } }: ParamType): Promise<Metadata> {
   return getMetadata({
     asPath: `/${subject}`,

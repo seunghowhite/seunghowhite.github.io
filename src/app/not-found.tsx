@@ -6,7 +6,12 @@ const NotFound = () => {
       <h1 className="mb-4 text-2xl font-bold">Not Found</h1>
       <p className="mb-8 text-lg">찾을 수 없는 페이지입니다.</p>
 
-      <Link href="/">홈으로</Link>
+      <Link
+        href="/"
+        title="홈페이지로 돌아가기"
+      >
+        홈으로
+      </Link>
     </div>
   );
 };

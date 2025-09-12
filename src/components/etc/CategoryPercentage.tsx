@@ -41,7 +41,7 @@ export default function CategoryPercentage({ subject, color }: CategoryPercentag
         >
           {percentage}%
         </span>
-        <span className="text-xs text-gray-500 dark:text-gray-400">
+        <span className="underline-none text-xs text-gray-500 dark:text-gray-400">
           ({currentCategoryPosts}/{totalPosts})
         </span>
       </div>

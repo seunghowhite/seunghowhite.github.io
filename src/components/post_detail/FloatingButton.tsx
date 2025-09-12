@@ -24,6 +24,7 @@ const FloatingButton = () => {
             "absolute bottom-0 right-0 z-10 h-11 w-11 border transition",
             visible ? "bg-accent" : "bg-background"
           )}
+          title="설정 버튼"
         >
           <IconSetting className="text-foreground" />
         </UtilButton>
