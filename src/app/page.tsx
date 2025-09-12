@@ -61,7 +61,7 @@ export default function HomePage() {
                 >
                   덕:
                 </strong>
-                일상생활에서 얻는 생각을 기록합니다.
+                일상생활을 기록합니다.
               </p>
               <CategoryPercentage
                 subject="moral"
@@ -81,7 +81,7 @@ export default function HomePage() {
                 >
                   체:
                 </strong>
-                몸을 가꾸는 기록을 담았습니다.
+                몸을 가꾸는 생활을 담았습니다.
               </p>
               <CategoryPercentage
                 subject="body"
