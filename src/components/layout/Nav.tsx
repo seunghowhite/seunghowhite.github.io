@@ -13,9 +13,9 @@ const Nav = () => {
   const { ref, marginTop } = useSpyElem(65);
   const pathname = usePathname();
   const navList = [
-    { name: "지(智)", href: "/knowledge", color: "var(--knowledge-color)" },
-    { name: "덕(德)", href: "/moral", color: "var(--moral-color)" },
-    { name: "체(體)", href: "/body", color: "var(--body-color)" },
+    { name: "지(智)", href: "/knowledge", color: "var(--knowledge-color)", content: "개발 관련 내용을 담고 있습니다." },
+    { name: "덕(德)", href: "/moral", color: "var(--moral-color)", content: "일상생활을 기록합니다." },
+    { name: "체(體)", href: "/body", color: "var(--body-color)", content: "몸을 가꾸는 생활을 담았습니다." },
   ];
 
   return (
@@ -30,6 +30,7 @@ const Nav = () => {
           <Link
             href={"/"}
             className="group flex items-center gap-1"
+            title="홈으로"
           >
             <Image
               src={icon}
@@ -49,6 +50,7 @@ const Nav = () => {
             <Link
               href={navItem.href}
               key={navItem.name}
+              title={navItem.content}
               className="rounded-full border-2 px-2 py-1 text-center text-sm transition-colors sm:px-4 lg:text-base"
               style={
                 pathname?.startsWith(navItem.href)
@@ -68,6 +70,7 @@ const Nav = () => {
         <section className="flex">
           <Link
             href={"/about"}
+            title="About 페이지로 이동합니다."
             className="hidden px-4 py-1 text-center text-sm 2sm:block"
           >
             About

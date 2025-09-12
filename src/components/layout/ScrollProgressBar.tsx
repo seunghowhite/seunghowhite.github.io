@@ -18,6 +18,7 @@ const ScrollProgressBar = () => {
   };
   return (
     <div
+      title="스크롤 진행률 바"
       className="fixed top-0 z-30 h-1 w-full bg-blue-600"
       style={{ transform: `translateX(${scrolled - 100}%)` }}
     />

@@ -20,7 +20,10 @@ export default function CategoryList({ list, subject, targetCategory }: Props) {
         <ul className="flex flex-wrap gap-3">
           {cglist.map(([category, count]) => (
             <li key={category}>
-              <Link href={`/${subject}${category === "all" ? "" : "/" + category}`}>
+              <Link
+                href={`/${subject}${category === "all" ? "" : "/" + category}`}
+                title={`${titleCase(category)} 카테고리로 이동`}
+              >
                 <div
                   className={`min-w-28 rounded-md px-2 py-1 text-center
                   ${(category === "all" && !targetCategory) || targetCategory === category ? "bg-muted" : "hover:bg-accent"}`}

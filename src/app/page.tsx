@@ -32,6 +32,7 @@ export default function HomePage() {
           <Link
             href={"/knowledge"}
             className="w-full underline-offset-4 hover:underline"
+            title="지(智) 페이지로 이동합니다."
           >
             <div className="flex flex-col gap-2">
               <p className="text-start">
@@ -52,6 +53,7 @@ export default function HomePage() {
           <Link
             href={"/moral"}
             className="w-full underline-offset-4 hover:underline"
+            title="덕(德) 페이지로 이동합니다."
           >
             <div className="flex flex-col gap-2">
               <p className="text-start">
@@ -72,6 +74,7 @@ export default function HomePage() {
           <Link
             href={"/body"}
             className="w-full underline-offset-4 hover:underline"
+            title="체(體) 페이지로 이동합니다."
           >
             <div className="flex flex-col gap-2">
               <p className="text-start">

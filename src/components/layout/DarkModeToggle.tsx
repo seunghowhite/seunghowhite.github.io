@@ -24,6 +24,7 @@ const DarkModeToggle = () => {
 
   return (
     <div
+      title="다크모드 토글"
       onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
       className={`sm:dark:shadow-[inset_0_8px_60px_rgba(0,0,0,0.3),inset_8px_0_8px_rgba(199, 117, 117,
         0.3),inset_0_-4px_4px_rgba(0,0,0,0.3)] relative mr-4 flex cursor-pointer items-center rounded-full px-[0.3em] sm:mr-0
