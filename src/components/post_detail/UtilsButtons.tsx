@@ -10,7 +10,7 @@ interface Props {
   onClick: () => void;
   children: React.ReactElement;
   className?: string;
-  title: string;
+  title?: string;
 }
 
 export const UtilButton = forwardRef<HTMLButtonElement, Props>(
