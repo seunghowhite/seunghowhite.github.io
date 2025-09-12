@@ -53,22 +53,26 @@ const config: Config = {
             "h2, h3, h4": {
               scrollMarginTop: "5rem",
             },
-
+            h1: {
+              fontSize: "3rem",
+              fontWeight: "700",
+              lineHeight: "3rem",
+            },
             h2: {
-              fontSize: "1.75rem",
+              fontSize: "2.3rem",
               fontWeight: "700",
               lineHeight: "2rem",
-            },
-            hr: {
-              marginTop: "16px",
-              marginBottom: "16px",
             },
             h3: {
               fontSize: "1.5rem",
               fontWeight: "600",
               lineHeight: "1.75rem",
               marginTop: "1rem",
-              marginBottom: "0",
+              marginBottom: "1rem",
+            },
+            hr: {
+              marginTop: "16px",
+              marginBottom: "16px",
             },
 
             p: {
