@@ -19,7 +19,7 @@ const META = {
   ],
   url: BASE_URL,
   googleVerification: "RvNTP2N2jJsl-LBo0aHC0kM5UlcISamJmr0SoXQsYbs",
-  naverVerification: "xxx",
+  naverVerification: "553e9d800541385acd2d31f4e3e2b412e5aeeee8",
   ogImage: "/thumbnail.png",
 } as const;
 
