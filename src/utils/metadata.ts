@@ -3,12 +3,22 @@ import { Metadata } from "next";
 export const BASE_URL = "https://seunghowhite.github.io";
 
 const META = {
-  title: "Eat-Stone 블로그",
+  title: "EatStone 블로그",
   siteName: "프론트엔드 개발자 백승호의 블로그",
   description: "지덕체 기반으로 기록을 합니다",
-  keyword: ["Eat-Stone", "eat-stone", "seunghowhite", "stone"],
+  keyword: [
+    "Eat-Stone",
+    "eat-stone",
+    "seunghowhite",
+    "stone",
+    "eatstone",
+    "EatStone",
+    "백승호",
+    "백승호 블로그",
+    "백승호 블로그 프론트엔드",
+  ],
   url: BASE_URL,
-  googleVerification: "xxx",
+  googleVerification: "RvNTP2N2jJsl-LBo0aHC0kM5UlcISamJmr0SoXQsYbs",
   naverVerification: "xxx",
   ogImage: "/thumbnail.png",
 } as const;
@@ -24,7 +34,7 @@ interface generateMetadataProps {
 export const getMetadata = (metadataProps: generateMetadataProps) => {
   const { title, description, asPath, ogImage, keywords } = metadataProps || {};
 
-  const TITLE = title ? `${title} | Eat-Stone 블로그` : META.title;
+  const TITLE = title ? `${title} | EatStone 블로그` : META.title;
   const KEY_WORDS = [...META.keyword, ...(keywords || [])];
   const DESCRIPTION = description || META.description;
   const PAGE_URL = asPath ? asPath : "";
