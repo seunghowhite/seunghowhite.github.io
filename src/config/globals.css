@@ -31,10 +31,10 @@
   --foreground: var(--black);
 
   --muted: #c2c2c2;
-  --muted-foreground: #d1d5db;
+  --muted-foreground: #969696;
 
   --accent: #f0edeb;
-  --accent-foreground: ;
+  --accent-foreground: #888888;
 
   --informative: #e0f2fe;
   --informative-foreground: var(--black);
@@ -65,7 +65,7 @@
   --muted-foreground: #797d85;
 
   --accent: #3c4d6b;
-  --accent-foreground: ;
+  --accent-foreground: #e2e8f0;
 
   --informative: #065079;
   --informative-foreground: var(--white);
