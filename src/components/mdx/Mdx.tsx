@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Bookmark } from "@/components/mdx/Bookmark";
 import { Callout } from "@/components/mdx/Callout";
 import { ColoredHeading } from "@/components/mdx/ColoredHeading";
 import { Image } from "@/components/mdx/Image";
@@ -10,6 +11,7 @@ const createMdxComponents = (subject?: string): MDXComponents => ({
   img: Image as any,
   blockquote: Callout,
   Callout,
+  Bookmark,
   h1: ({ children, id, ...props }: any) => (
     <ColoredHeading
       level={1}
