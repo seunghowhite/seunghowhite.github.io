@@ -1,21 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const ScrollProgressBar = () => {
   const [scrolled, setScrolled] = useState<number>(0);
+
+  const onScroll = useCallback(() => {
+    const viewportHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+    setScrolled((document.documentElement.scrollTop / viewportHeight) * 100);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const onScroll = () => {
-    const viewportHeight = document.documentElement.scrollHeight - window.innerHeight;
-
-    setScrolled((document.documentElement.scrollTop / viewportHeight) * 100);
-  };
+  }, [onScroll]);
   return (
     <div
       title="스크롤 진행률 바"

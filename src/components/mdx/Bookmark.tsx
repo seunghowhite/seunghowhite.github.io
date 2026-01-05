@@ -9,7 +9,7 @@ interface BookmarkProps {
   href: string;
   title: string;
   description?: string;
-  children?: ReactNode;
+  _children?: ReactNode; // 사용하지 않는 prop (MDX에서 자동으로 전달될 수 있음)
 }
 
 // 기본 클립 아이콘 SVG
@@ -53,7 +53,7 @@ const getFaviconUrl = (url: string): string => {
   }
 };
 
-export const Bookmark = ({ href, title, description, children }: BookmarkProps) => {
+export const Bookmark = ({ href, title, description, _children }: BookmarkProps) => {
   const faviconUrl = getFaviconUrl(href);
 
   return (

@@ -17,14 +17,15 @@ export interface params {
 }
 
 interface ParamType {
-  params: params;
+  params: Promise<params>;
 }
 
-export async function generateStaticParams() {
-  return getStaticParams("post");
+export async function generateStaticParams(): Promise<params[]> {
+  return getStaticParams("post") as params[];
 }
 
-export async function generateMetadata({ params: { subject, category, post } }: ParamType): Promise<Metadata> {
+export async function generateMetadata({ params }: ParamType): Promise<Metadata> {
+  const { subject, category, post } = await params;
   const { title, description, keywords, thumbnail } = getPostDetailData({ subject, category, post });
   return getMetadata({
     title,
@@ -35,7 +36,8 @@ export async function generateMetadata({ params: { subject, category, post } }: 
   });
 }
 
-export default async function PostPage({ params: { subject, category, post } }: ParamType) {
+export default async function PostPage({ params }: ParamType) {
+  const { subject, category, post } = await params;
   const { content, title, date, readingMinutes } = getPostDetailData({ subject, category, post });
   const toc = parseToc(content);
 

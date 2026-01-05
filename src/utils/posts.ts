@@ -99,9 +99,11 @@ const parsePostData = (filePath: string) => {
 
 // getPostList 함수
 export const getPostDetailData = ({ subject, category, post }: { subject: string; category: string; post: string }) => {
+  // glob 패턴에서 슬래시 사용 (Windows 경로 구분자를 슬래시로 정규화)
+  const normalizedPostsPath = POSTS_PATH.replace(/\\/g, "/");
   const globPath = category
-    ? `${POSTS_PATH}/${subject}/${category}/${post}/*.mdx`
-    : `${POSTS_PATH}/${subject}/**/**/*.mdx`;
+    ? `${normalizedPostsPath}/${subject}/${category}/${post}/*.mdx`
+    : `${normalizedPostsPath}/${subject}/**/**/*.mdx`;
   const postPaths: string[] = sync(globPath);
   if (!postPaths.length) throw new Error("Post not found");
 
@@ -131,14 +133,28 @@ export const getPostList = async (subject?: string, category?: string) => {
   // postPaths를 순회하며 포스트 데이터 추출
   return postPaths
     .map((postPath) => {
-      const pathParts = postPath.split(path.sep);
+      // Windows 경로 구분자를 Unix 스타일로 변환
+      const normalizedPath = postPath.replace(/\\/g, "/");
+      const pathParts = normalizedPath.split("/");
+
+      // _posts 인덱스 찾기
+      const postsIndex = pathParts.findIndex((part) => part === "_posts");
+
+      if (postsIndex === -1) {
+        // _posts를 찾을 수 없는 경우 빈 객체 반환 (나중에 필터링)
+        return null;
+      }
 
       // subjectPath 추출 (subject가 없을 경우 자동 추출)
-      const subjectPath = subject || pathParts[7]; // 서브젝트 추출
-      const subjectIndex = pathParts.indexOf(subjectPath);
+      const subjectPath = subject || pathParts[postsIndex + 1]; //서브젝트 추출
+      const categoryPath = pathParts[postsIndex + 2] || ""; //카테고리 추출
+      const post = pathParts[postsIndex + 3] || ""; //포스트 추출
 
-      const categoryPath = pathParts[subjectIndex + 1] || ""; // 카테고리 추출
-      const post = pathParts[subjectIndex + 2] || ""; // 포스트 추출
+      // 유효성 검사
+      if (!subjectPath || !categoryPath || !post) {
+        return null;
+      }
+
       // URL 생성
       const url = `/${subjectPath}/${categoryPath}/${post}`;
 
@@ -157,7 +173,18 @@ export const getPostList = async (subject?: string, category?: string) => {
         post,
       };
     })
-    .sort((a, b) => (a.date > b.date ? -1 : 1));
+    .filter((item) => item !== null) // null 값 제거
+    .sort((a, b) => (a!.date > b!.date ? -1 : 1)) as Array<{
+    subject: string;
+    category: string;
+    thumbnail: string;
+    title: string;
+    description: string;
+    readingMinutes: number;
+    date: string;
+    url: string;
+    post: string;
+  }>;
 };
 
 export const parseToc = (content: string) => {
@@ -190,7 +217,7 @@ export const parseToc = (content: string) => {
           cleanText
             .replace("# ", "")
             .replace("#", "")
-            // eslint-disable-next-line no-useless-escape
+
             .replace(/[\[\]:!@#$/%^&*()+=,.]/g, "")
             .replace(/ /g, "-")
             .toLowerCase()

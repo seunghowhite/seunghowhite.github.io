@@ -1,0 +1,16 @@
+{
+  // ESLint 9 flat config 사용 활성화
+  // ESLint 8.57+ 및 ESLint 9에서 정식 지원되는 flat config 형식 사용
+  "eslint.useFlatConfig": true,
+
+  // ESLint가 검사할 파일 타입 지정
+  // JavaScript, JSX, TypeScript, TSX 파일에 대해 ESLint 검사 수행
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+
+  // 파일 저장 시 자동으로 실행할 코드 액션 설정
+  "editor.codeActionsOnSave": {
+    // ESLint 자동 수정 활성화
+    // 저장 시 ESLint가 자동으로 수정 가능한 오류를 수정
+    "source.fixAll.eslint": "explicit"
+  }
+}
