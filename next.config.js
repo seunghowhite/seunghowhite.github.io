@@ -6,11 +6,7 @@ const nextConfig = {
   //** 스트릭모드
   reactStrictMode: false,
   //** 빌드시 결과물 standalone
-  output: "export", // here
-  //** 빌드시 lint 체크 안함
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  output: "export",
   images: {
     unoptimized: true,
     remotePatterns: [

@@ -7,14 +7,20 @@ import { getMetadata } from "@/utils/metadata";
 import { getCategoryCounts, getPostList, getStaticParams } from "@/utils/posts";
 
 interface ParamType {
-  params: { subject: string; category: string };
+  params: Promise<{ subject: string; category: string }>;
 }
 
-export async function generateStaticParams() {
-  return getStaticParams("category");
+interface CategoryParams {
+  subject: string;
+  category: string;
 }
 
-export async function generateMetadata({ params: { subject, category } }: ParamType): Promise<Metadata> {
+export async function generateStaticParams(): Promise<CategoryParams[]> {
+  return getStaticParams("category") as CategoryParams[];
+}
+
+export async function generateMetadata({ params }: ParamType): Promise<Metadata> {
+  const { subject, category } = await params;
   return getMetadata({
     asPath: `/${subject}/${category}`,
     keywords: [`${subject}`],
@@ -22,7 +28,8 @@ export async function generateMetadata({ params: { subject, category } }: ParamT
   });
 }
 // 페이지 컴포넌트
-export default async function CategoryPage({ params: { subject, category } }: ParamType) {
+export default async function CategoryPage({ params }: ParamType) {
+  const { subject, category } = await params;
   const categoryCountList = getCategoryCounts(subject);
   const postList = await getPostList(subject, category);
 

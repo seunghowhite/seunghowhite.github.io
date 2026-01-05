@@ -1,6 +1,5 @@
 "use client";
 
-/* eslint-disable max-len */
 import React, { useEffect, useState } from "react";
 
 import Dark from "@/components/Icons/Dark";
@@ -13,7 +12,9 @@ const DarkModeToggle = () => {
   const { systemTheme, theme, setTheme } = useTheme();
 
   // 컴포넌트 마운트 후에만 테마 관련 상태 업데이트
+  // next-themes의 SSR 하이드레이션 불일치 방지를 위한 패턴
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

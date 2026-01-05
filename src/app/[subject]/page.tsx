@@ -6,16 +6,21 @@ import { getMetadata } from "@/utils/metadata";
 import { getCategoryCounts, getPostList, getStaticParams } from "@/utils/posts";
 
 interface ParamType {
-  params: {
+  params: Promise<{
     subject: string;
-  };
+  }>;
 }
 
-export async function generateStaticParams() {
-  return getStaticParams("subject");
+interface SubjectParams {
+  subject: string;
 }
 
-export async function generateMetadata({ params: { subject } }: ParamType): Promise<Metadata> {
+export async function generateStaticParams(): Promise<SubjectParams[]> {
+  return getStaticParams("subject") as SubjectParams[];
+}
+
+export async function generateMetadata({ params }: ParamType): Promise<Metadata> {
+  const { subject } = await params;
   return getMetadata({
     asPath: `/${subject}`,
     keywords: [`${subject}`],
@@ -23,7 +28,8 @@ export async function generateMetadata({ params: { subject } }: ParamType): Prom
   });
 }
 
-export default async function SubjectPage({ params: { subject } }: ParamType) {
+export default async function SubjectPage({ params }: ParamType) {
+  const { subject } = await params;
   const categoryCountList = getCategoryCounts(subject);
   const postList = await getPostList(subject);
 

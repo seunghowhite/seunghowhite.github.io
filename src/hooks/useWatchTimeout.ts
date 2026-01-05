@@ -9,7 +9,9 @@ export default function useWatchTimeout(watch: unknown, ms: number, callback: ()
     }
 
     return () => {
-      timeOut && clearInterval(timeOut);
+      if (timeOut) {
+        clearTimeout(timeOut);
+      }
     };
   }, [callback, ms, watch]);
 }
