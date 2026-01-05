@@ -6,7 +6,7 @@ const nextConfig = {
   //** 스트릭모드
   reactStrictMode: false,
   //** 빌드시 결과물 standalone
-  output: "export", // here
+  output: "export",
   images: {
     unoptimized: true,
     remotePatterns: [
