@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, createElement } from "react";
 
 interface ColoredHeadingProps {
   level: 1 | 2 | 3;
@@ -23,16 +23,15 @@ const getSubjectColor = (subject?: string): string => {
 
 export const ColoredHeading = ({ level, children, subject, id, ...props }: ColoredHeadingProps) => {
   const color = getSubjectColor(subject);
+  const HeadingTag = `h${level}` as "h1" | "h2" | "h3";
 
-  const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements;
-
-  return (
-    <HeadingTag
-      id={id}
-      style={{ color }}
-      {...props}
-    >
-      {children}
-    </HeadingTag>
+  return createElement(
+    HeadingTag,
+    {
+      id,
+      style: { color },
+      ...props,
+    },
+    children
   );
 };
