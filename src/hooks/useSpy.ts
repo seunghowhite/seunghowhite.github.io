@@ -24,8 +24,9 @@ export const useSpyElem = (elemHeight: number) => {
 
     const NextBottomPoint = currScrollTop + elemHeight;
 
-    if (isUpTransition && transitionPoint.current < currScrollTop) {
-      transitionPoint.current = prevScrollTop.current;
+    // 상단으로 올라갈 때 자동으로 아래로 내려오게 함
+    if (isUpTransition) {
+      transitionPoint.current = currScrollTop + elemHeight;
     }
 
     if (isDownTransition && NextBottomPoint < transitionPoint.current) {

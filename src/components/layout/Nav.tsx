@@ -20,7 +20,7 @@ const Nav = () => {
 
   return (
     <nav
-      style={{ marginTop }}
+      style={{ marginTop, transition: "margin-top 0.3s ease-out" }}
       ref={ref}
       className="fixed top-0 z-20 flex w-full justify-center border-b bg-background shadow-md print:hidden"
     >
