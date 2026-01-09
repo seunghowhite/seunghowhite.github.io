@@ -10,7 +10,7 @@ import { useSpyElem } from "@/hooks/useSpy";
 import icon from "@/public/icon/stone_icon.png";
 
 const Nav = () => {
-  const { ref, marginTop } = useSpyElem(65);
+  const { ref, marginTop, isMounted } = useSpyElem(65);
   const pathname = usePathname();
   const navList = [
     { name: "지(智)", href: "/knowledge", color: "var(--knowledge-color)", content: "개발 관련 내용을 담고 있습니다." },
@@ -20,7 +20,10 @@ const Nav = () => {
 
   return (
     <nav
-      style={{ marginTop, transition: "margin-top 0.3s ease-out" }}
+      style={{
+        marginTop: isMounted ? marginTop : 0,
+        transition: "margin-top 0.3s ease-out",
+      }}
       ref={ref}
       className="fixed top-0 z-20 flex w-full justify-center border-b bg-background shadow-md print:hidden"
     >

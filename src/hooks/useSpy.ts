@@ -1,52 +1,53 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-type ScrollDirection = "UP" | "DOWN";
-
 export const useSpyElem = (elemHeight: number) => {
   // spy를 부착할 요소 ref
   const ref = useRef<HTMLDivElement>(null);
-  // elem의 marginTop. 스크롤에 따라 동적으로 변함
+  // 맨 위에서 헤더를 보여줄 임계값
+  const topThreshold = 10;
+
+  // elem의 marginTop. 서버와 클라이언트에서 동일한 초기값 사용
   const [marginTop, setMarginTop] = useState(0);
+  // 클라이언트 마운트 여부 추적
+  const [isMounted, setIsMounted] = useState(false);
 
-  // 스크롤이 일어나기 직전의 scroll top. scroll 방향
+  // 스크롤이 일어나기 직전의 scroll top
   const prevScrollTop = useRef(0);
-  const prevDirection = useRef<ScrollDirection>("DOWN");
-
-  // 스크롤 방향전환 지점. 요소의 최하단지점이 기준
-  const transitionPoint = useRef(elemHeight);
 
   const onScroll = useCallback(() => {
     const currScrollTop = document?.documentElement?.scrollTop || document?.body?.scrollTop || 0;
     const nextDirection = prevScrollTop.current > currScrollTop ? "UP" : "DOWN";
 
-    const isUpTransition = prevDirection.current === "DOWN" && nextDirection === "UP";
-    const isDownTransition = prevDirection.current === "UP" && nextDirection === "DOWN";
-
-    const NextBottomPoint = currScrollTop + elemHeight;
-
-    // 상단으로 올라갈 때 자동으로 아래로 내려오게 함
-    if (isUpTransition) {
-      transitionPoint.current = currScrollTop + elemHeight;
+    // 맨 위에 있을 때는 항상 헤더 표시
+    if (currScrollTop <= topThreshold) {
+      setMarginTop(0);
+    } else {
+      // 스크롤 방향에 따라 즉시 반응
+      if (nextDirection === "DOWN") {
+        setMarginTop(-elemHeight); // 아래로 스크롤 → 숨김
+      } else {
+        setMarginTop(0); // 위로 스크롤 → 표시
+      }
     }
 
-    if (isDownTransition && NextBottomPoint < transitionPoint.current) {
-      transitionPoint.current = prevScrollTop.current + elemHeight;
-    }
-
-    const newMargin = Math.min(0, Math.max(-elemHeight, transitionPoint.current - NextBottomPoint));
-    setMarginTop(newMargin);
-
-    // 이벤트가 마무리된 시점. 현재 값을 prev에 저장
-    prevDirection.current = nextDirection;
     prevScrollTop.current = currScrollTop;
-  }, [elemHeight]);
+  }, [elemHeight, topThreshold]);
 
-  // 중간 지점에서 새로고침시 transition point를 해당 지점으로 초기화
+  // 클라이언트 마운트 후 초기 스크롤 위치 설정
   useEffect(() => {
-    const scrollTop = document.documentElement?.scrollTop || document.body.scrollTop;
-    transitionPoint.current = scrollTop + elemHeight;
+    setTimeout(() => {
+      setIsMounted(true);
+    }, 0);
+    const scrollTop = document.documentElement?.scrollTop || document.body.scrollTop || 0;
     prevScrollTop.current = scrollTop;
-  }, [elemHeight]);
+
+    // 초기 스크롤 위치에 따라 marginTop 설정
+    if (scrollTop > topThreshold) {
+      setTimeout(() => {
+        setMarginTop(-elemHeight);
+      }, 0);
+    }
+  }, [elemHeight, topThreshold]);
 
   // window document에 scroll 이벤트 부착, 해제
   useEffect(() => {
@@ -56,5 +57,5 @@ export const useSpyElem = (elemHeight: number) => {
     };
   }, [onScroll]);
 
-  return { ref, marginTop };
+  return { ref, marginTop, isMounted };
 };
