@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[22016,["/_next/static/chunks/3e50cc00c0931bc1.js","/_next/static/chunks/d5496029d41b4dd3.js"],""]
+2:I[22016,["/_next/static/chunks/3b5e379c090556e8.js","/_next/static/chunks/d5496029d41b4dd3.js"],""]
 3:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/7340adf74ff47ec0.js"],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"buildId":"NSmZZKSNSNIrbLVYDbuQe","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"grid flex-1 place-content-center text-center","children":[["$","h1",null,{"className":"mb-4 text-2xl font-bold","children":"🚧 준비중 입니다 🛠️"}],["$","p",null,{"className":"mb-8 text-lg","children":"찾아주셔서 감사합니다."}],["$","$L2",null,{"href":"/","title":"홈페이지로 돌아가기","children":"홈으로"}]]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"tq6N8B1hvc3zLZ8hIQdT0","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"grid flex-1 place-content-center text-center","children":[["$","h1",null,{"className":"mb-4 text-2xl font-bold","children":"🚧 준비중 입니다 🛠️"}],["$","p",null,{"className":"mb-8 text-lg","children":"찾아주셔서 감사합니다."}],["$","$L2",null,{"href":"/","title":"홈페이지로 돌아가기","children":"홈으로"}]]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
 5:null
