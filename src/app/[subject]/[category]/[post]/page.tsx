@@ -62,6 +62,8 @@ export default async function PostPage({ params }: ParamType) {
         <PostBody
           content={content}
           subject={subject}
+          category={category}
+          post={post}
         />
       </article>
       <hr />

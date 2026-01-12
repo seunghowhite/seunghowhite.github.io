@@ -75,14 +75,20 @@ export const getCategoryCounts = (subject: string) => {
   };
 };
 
-const parsePostData = (filePath: string) => {
+const parsePostData = (filePath: string, subject?: string, category?: string, post?: string) => {
   const fileContent = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(fileContent);
 
   const readingMinutes = Math.ceil(readingTime(content).minutes); // 읽기 시간 계산
   const date = data.date ? new Date(data.date).toISOString().split("T")[0] : ""; // 날짜 형식 변환
   const title = data.title as string;
-  const thumbnail = data.thumbnail as string;
+  let thumbnail = data.thumbnail as string;
+
+  // thumbnail이 /posts/로 시작하지 않고 subject/category/post가 모두 있으면 경로 자동 생성
+  if (thumbnail && !thumbnail.startsWith("/posts/") && subject && category && post) {
+    thumbnail = `/posts/${subject}/${category}/${post}/${thumbnail}`;
+  }
+
   const description = data.description as string;
   const keywords = data.keywords as string[];
   return {
@@ -107,7 +113,12 @@ export const getPostDetailData = ({ subject, category, post }: { subject: string
   const postPaths: string[] = sync(globPath);
   if (!postPaths.length) throw new Error("Post not found");
 
-  const { thumbnail, title, description, readingMinutes, date, content, keywords } = parsePostData(postPaths[0]); // 첫 번째 파일 데이터 추출
+  const { thumbnail, title, description, readingMinutes, date, content, keywords } = parsePostData(
+    postPaths[0],
+    subject,
+    category,
+    post
+  ); // 첫 번째 파일 데이터 추출
 
   return {
     thumbnail,
@@ -159,7 +170,12 @@ export const getPostList = async (subject?: string, category?: string) => {
       const url = `/${subjectPath}/${categoryPath}/${post}`;
 
       // 포스트 데이터를 파싱
-      const { thumbnail, title, description, readingMinutes, date } = parsePostData(postPath);
+      const { thumbnail, title, description, readingMinutes, date } = parsePostData(
+        postPath,
+        subjectPath,
+        categoryPath,
+        post
+      );
 
       return {
         subject: subjectPath,
