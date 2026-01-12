@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 import Footer from "@/components/layout/Footer";
 import Nav from "@/components/layout/Nav";
+import GoogleAnalytics from "@/config/GoogleAnalytics";
+import GoogleTagManager from "@/config/GoogleTagManager";
 import Providers from "@/config/Providers";
 import "@/config/globals.css";
 import { getMetadata } from "@/utils/metadata";
@@ -26,9 +28,8 @@ export default function RootLayout({
           <Footer />
           <div id="toast-root" />
         </Providers>
-        {/* 
-        <GoogleAnalytics gaId="G-TRBVGE9TYP" />
-        <GoogleTagManager gtmId="G-TRBVGE9TYP" /> */}
+        <GoogleAnalytics gaId="G-D824BHEDBG" />
+        <GoogleTagManager gtmId="G-D824BHEDBG" />
       </body>
     </html>
   );
