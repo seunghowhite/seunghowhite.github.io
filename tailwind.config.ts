@@ -72,8 +72,8 @@ const config: Config = {
               marginBottom: "1rem",
             },
             hr: {
-              marginTop: "16px",
-              marginBottom: "16px",
+              marginTop: "3rem",
+              marginBottom: "1rem",
             },
 
             p: {
