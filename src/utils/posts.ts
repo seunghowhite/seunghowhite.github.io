@@ -204,42 +204,96 @@ export const getPostList = async (subject?: string, category?: string) => {
 };
 
 export const parseToc = (content: string) => {
-  const regex = /^(##|###) (.*$)/gim;
-  const headingList = content.match(regex);
-  return (
-    headingList?.map((heading: string) => {
-      // 전체 제목에서 ## 또는 ### 제거
-      let cleanText = heading.replace(/^##\s*/, "").replace(/^###\s*/, "");
+  // Toggle 태그의 위치를 찾아서 범위 저장
+  const toggleRanges: Array<{ start: number; end: number }> = [];
+  const toggleRegex = /<Toggle[^>]*>/gi;
+  let toggleMatch;
 
-      // div 태그가 있으면 안의 텍스트만 추출 (더 강력한 정규식)
-      const textMatch = cleanText.match(/<div[^>]*className="[^"]*"[^>]*>(.*?)<\/div>/);
-      if (textMatch) {
-        cleanText = textMatch[1];
+  while ((toggleMatch = toggleRegex.exec(content)) !== null) {
+    const startPos = toggleMatch.index;
+    // Toggle 태그의 닫는 태그 찾기
+    let depth = 1;
+    let pos = toggleMatch.index + toggleMatch[0].length;
+
+    while (depth > 0 && pos < content.length) {
+      const openToggle = content.indexOf("<Toggle", pos);
+      const closeToggle = content.indexOf("</Toggle>", pos);
+
+      if (closeToggle === -1) break;
+
+      if (openToggle !== -1 && openToggle < closeToggle) {
+        depth++;
+        pos = openToggle + 7;
       } else {
-        // className이 없는 div 태그도 처리
-        const simpleTextMatch = cleanText.match(/<div[^>]*>(.*?)<\/div>/);
-        if (simpleTextMatch) {
-          cleanText = simpleTextMatch[1];
+        depth--;
+        if (depth === 0) {
+          toggleRanges.push({ start: startPos, end: closeToggle + 9 });
+          break;
         }
+        pos = closeToggle + 9;
       }
+    }
+  }
 
-      // text 필드에서도 # 기호 제거
-      cleanText = cleanText.replace(/#/g, "").trim();
+  // heading 찾기
+  const regex = /^(##|###) (.*$)/gim;
+  const headingList: Array<{ text: string; position: number }> = [];
+  let match;
 
-      return {
-        text: cleanText,
-        link:
-          "#" +
-          cleanText
-            .replace("# ", "")
-            .replace("#", "")
+  while ((match = regex.exec(content)) !== null) {
+    const heading = match[0];
+    const position = match.index;
 
-            .replace(/[\[\]:!@#$/%^&*()+=,.]/g, "")
-            .replace(/ /g, "-")
-            .toLowerCase()
-            .replace("?", ""),
-        indent: (heading.match(/#/g)?.length || 2) - 2,
-      };
-    }) || []
-  );
+    // 이 heading이 Toggle 내부에 있는지 확인
+    const isInsideToggle = toggleRanges.some((range) => position >= range.start && position <= range.end);
+
+    if (!isInsideToggle) {
+      headingList.push({ text: heading, position });
+    }
+  }
+
+  const linkCounts: { [key: string]: number } = {};
+
+  return headingList.map(({ text: heading }) => {
+    // 전체 제목에서 ## 또는 ### 제거
+    let cleanText = heading.replace(/^##\s*/, "").replace(/^###\s*/, "");
+
+    // div 태그가 있으면 안의 텍스트만 추출 (더 강력한 정규식)
+    const textMatch = cleanText.match(/<div[^>]*className="[^"]*"[^>]*>(.*?)<\/div>/);
+    if (textMatch) {
+      cleanText = textMatch[1];
+    } else {
+      // className이 없는 div 태그도 처리
+      const simpleTextMatch = cleanText.match(/<div[^>]*>(.*?)<\/div>/);
+      if (simpleTextMatch) {
+        cleanText = simpleTextMatch[1];
+      }
+    }
+
+    // text 필드에서도 # 기호 제거
+    cleanText = cleanText.replace(/#/g, "").trim();
+
+    // link 생성
+    let baseLink = cleanText
+      .replace("# ", "")
+      .replace("#", "")
+      .replace(/[\[\]:!@#$/%^&*()+=,.]/g, "")
+      .replace(/ /g, "-")
+      .toLowerCase()
+      .replace("?", "");
+
+    // 중복된 link 처리
+    if (linkCounts[baseLink]) {
+      linkCounts[baseLink]++;
+      baseLink = `${baseLink}-${linkCounts[baseLink]}`;
+    } else {
+      linkCounts[baseLink] = 1;
+    }
+
+    return {
+      text: cleanText,
+      link: `#${baseLink}`,
+      indent: (heading.match(/#/g)?.length || 2) - 2,
+    };
+  });
 };

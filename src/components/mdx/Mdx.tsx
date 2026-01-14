@@ -4,6 +4,7 @@ import { Callout } from "@/components/mdx/Callout";
 import { ColoredHeading } from "@/components/mdx/ColoredHeading";
 import { Image } from "@/components/mdx/Image";
 import { ExternalLink } from "@/components/mdx/Link";
+import { Toggle } from "@/components/mdx/Toggle";
 import { MDXComponents } from "mdx/types";
 
 const createMdxComponents = (subject?: string, category?: string, post?: string): MDXComponents => ({
@@ -21,6 +22,7 @@ const createMdxComponents = (subject?: string, category?: string, post?: string)
   blockquote: Callout,
   Callout,
   Bookmark,
+  Toggle,
   h1: ({ children, id, ...props }: any) => (
     <ColoredHeading
       level={1}
