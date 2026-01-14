@@ -2,6 +2,7 @@
 import { Bookmark } from "@/components/mdx/Bookmark";
 import { Callout } from "@/components/mdx/Callout";
 import { ColoredHeading } from "@/components/mdx/ColoredHeading";
+import { Footnote } from "@/components/mdx/Footnote";
 import { Image } from "@/components/mdx/Image";
 import { ExternalLink } from "@/components/mdx/Link";
 import { Toggle } from "@/components/mdx/Toggle";
@@ -23,6 +24,7 @@ const createMdxComponents = (subject?: string, category?: string, post?: string)
   Callout,
   Bookmark,
   Toggle,
+  Footnote,
   h1: ({ children, id, ...props }: any) => (
     <ColoredHeading
       level={1}
