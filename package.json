@@ -24,6 +24,7 @@
     "react": "^19",
     "react-dom": "^19",
     "reading-time": "^1.5.0",
+    "recharts": "^3.7.0",
     "rehype-pretty-code": "^0.14.0",
     "tailwind-merge": "^2.5.4"
   },
