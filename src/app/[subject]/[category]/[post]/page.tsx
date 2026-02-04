@@ -4,11 +4,12 @@ import { Metadata } from "next";
 import FloatingButton from "@/components/post_detail/FloatingButton";
 import Giscus from "@/components/post_detail/Giscus";
 import { PostBody } from "@/components/post_detail/PostBody";
+import PostFooter from "@/components/post_detail/PostFooter";
 import PostHeader from "@/components/post_detail/PostHeader";
 import TocSidebar from "@/components/post_detail/TableOfContentSidebar";
 import TableOfContentTop from "@/components/post_detail/TableOfContentTop";
 import { getMetadata } from "@/utils/metadata";
-import { getPostDetailData, getStaticParams, parseToc } from "@/utils/posts";
+import { getPostDetailData, getPostList, getStaticParams, parseToc } from "@/utils/posts";
 
 export interface params {
   subject: string;
@@ -40,6 +41,7 @@ export default async function PostPage({ params }: ParamType) {
   const { subject, category, post } = await params;
   const { content, title, date, readingMinutes } = getPostDetailData({ subject, category, post });
   const toc = parseToc(content);
+  const postList = await getPostList(subject, category);
 
   return (
     <section className="prose mx-auto w-full max-w-[47rem] px-5 dark:prose-invert sm:px-6">
@@ -62,10 +64,22 @@ export default async function PostPage({ params }: ParamType) {
         <PostBody
           content={content}
           subject={subject}
+          category={category}
+          post={post}
         />
       </article>
       <hr />
       <Giscus />
+      <PostFooter
+        subject={subject}
+        currentPost={post}
+        postList={postList.map((p) => ({
+          post: p.post,
+          title: p.title,
+          url: p.url,
+          date: p.date,
+        }))}
+      />
       <FloatingButton />
     </section>
   );

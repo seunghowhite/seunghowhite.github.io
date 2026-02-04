@@ -1,0 +1,121 @@
+---
+title: "2026년 운동 & 몸무게 기록"
+date: 2026-02-03
+description: 2026년 몸에관한 기록
+keywords: [2026년, 기록, 몸기록, 2026년 기록, 2026년 몸기록, 운동기록, 다이어트기록, 식단기록, 몸무게 변화]
+thumbnail: thumbnail.png   
+---
+
+
+## 2026년 몸무게, 근육량, 체지방 변화
+
+{(() => {
+  // 1월~12월, 각 월당 4개(1~4주). 없는 주는 null
+  const monthlyWeights = [
+    [76.9, 80.7, 81.1, 80.3], // 1월 1~4주 (kg)
+    [79, 78.5, null, null], // 2월 1~4주
+    [null, null, null, null], // 3월
+    [null, null, null, null], // 4월
+    [null, null, null, null], // 5월
+    [null, null, null, null], // 6월
+    [null, null, null, null], // 7월
+    [null, null, null, null], // 8월
+    [null, null, null, null], // 9월
+    [null, null, null, null], // 10월
+    [null, null, null, null], // 11월
+    [null, null, null, null], // 12월
+  ];
+  // 1월~12월, 각 월당 4개(1~4주) 근육량(kg). 없는 주는 null
+  const monthlyMuscleMass = [
+    [35.4, 35.2, 35.1, 35.3], // 1월 1~4주 (kg)
+    [35.5, 35.4, null, null], // 2월 1~4주
+    [null, null, null, null], // 3월
+    [null, null, null, null], // 4월
+    [null, null, null, null], // 5월
+    [null, null, null, null], // 6월
+    [null, null, null, null], // 7월
+    [null, null, null, null], // 8월
+    [null, null, null, null], // 9월
+    [null, null, null, null], // 10월
+    [null, null, null, null], // 11월
+    [null, null, null, null], // 12월
+  ];
+  // 1월~12월, 각 월당 4개(1~4주) 체지방(%). 없는 주는 null
+  const monthlyBodyFat = [
+    [19, 21.8, 22.5, 21.2], // 1월 1~4주 (%)
+    [20, 21, null, null], // 2월 1~4주
+    [null, null, null, null], // 3월
+    [null, null, null, null], // 4월
+    [null, null, null, null], // 5월
+    [null, null, null, null], // 6월
+    [null, null, null, null], // 7월
+    [null, null, null, null], // 8월
+    [null, null, null, null], // 9월
+    [null, null, null, null], // 10월
+    [null, null, null, null], // 11월
+    [null, null, null, null], // 12월
+  ];
+  return (
+    <WeightChart
+      monthlyWeights={monthlyWeights}
+      monthlyMuscleMass={monthlyMuscleMass}
+      monthlyBodyFat={monthlyBodyFat}
+    />
+  );
+})()}
+
+## 2026년 3대운동 기록
+
+{(() => {
+  // 1~12월, 월 첫날 기준 kg. 없는 월은 null
+  const monthlyBenchPress = [
+    65, // 1월
+    67, // 2월
+    null, // 3월
+    null, // 4월
+    null, // 5월
+    null, // 6월
+    null, // 7월
+    null, // 8월
+    null, // 9월
+    null, // 10월
+    null, // 11월
+    null, // 12월
+  ];
+  const monthlyDeadlift = [
+    108, // 1월
+    110, // 2월
+    null, // 3월
+    null, // 4월
+    null, // 5월
+    null, // 6월
+    null, // 7월
+    null, // 8월
+    null, // 9월
+    null, // 10월
+    null, // 11월
+    null, // 12월
+  ];
+  const monthlySquat = [
+    87, // 1월
+    90, // 2월
+    null, // 3월
+    null, // 4월
+    null, // 5월
+    null, // 6월
+    null, // 7월
+    null, // 8월
+    null, // 9월
+    null, // 10월
+    null, // 11월
+    null, // 12월
+  ];
+  return (
+    <BigThreeChart
+      monthlyBenchPress={monthlyBenchPress}
+      monthlyDeadlift={monthlyDeadlift}
+      monthlySquat={monthlySquat}
+    />
+  );
+})()}
+

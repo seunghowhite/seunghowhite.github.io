@@ -2,13 +2,22 @@
 interface ImageProps {
   src: string;
   alt: string;
+  subject?: string;
+  category?: string;
+  post?: string;
 }
 // 마크다운에 들어갈 이미지 컴포넌트
-export const Image = ({ src, alt }: ImageProps) => {
+export const Image = ({ src, alt, subject, category, post }: ImageProps) => {
+  // src가 /posts/로 시작하지 않고, subject/category/post가 모두 있으면 PostPath 사용
+  let imageSrc = src;
+  if (!src.startsWith("/posts/") && subject && category && post) {
+    imageSrc = `/posts/${subject}/${category}/${post}/${src}`;
+  }
+
   return (
     <>
       <img
-        src={src}
+        src={imageSrc}
         alt={alt}
         className="mx-auto mb-0 mt-8 rounded-md"
       />
