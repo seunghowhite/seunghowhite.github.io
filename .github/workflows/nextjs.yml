@@ -14,9 +14,9 @@ jobs:
 
       - name: Install and Build 🔧
         env:
-          Environment_variables: ${{ secrets.TEST_VARIABLE_NAME }}
+          Environment_variables: ${{ vars.TEST_VARIABLE_NAME }}
           Environment_secrets: ${{ secrets.TEST_SECRETS_NAME }}
-          NEXT_PUBLIC_TEST_VARIABLE: ${{ secrets.TEST_VARIABLE_NAME }}
+          NEXT_PUBLIC_TEST_VARIABLE: ${{ vars.TEST_VARIABLE_NAME }}
           NEXT_PUBLIC_TEST_SECRET: ${{ secrets.TEST_SECRETS_NAME }}
         run: |
           npm install
