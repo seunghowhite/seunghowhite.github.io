@@ -93,21 +93,6 @@ export default function HomePage() {
             </div>
           </Link>
         </div>
-
-        {/* Secrets 테스트 표시 - 검증 후 삭제 권장 */}
-        <div className="mt-8 rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-800 dark:bg-amber-950/30">
-          <p className="mb-2 text-sm font-medium text-amber-800 dark:text-amber-200">🔧 Secrets 테스트</p>
-          <dl className="space-y-1 text-left text-sm text-gray-700 dark:text-gray-300">
-            <div>
-              <dt className="font-medium">TEST_VARIABLE:</dt>
-              <dd className="font-mono text-xs">{process.env.NEXT_PUBLIC_TEST_VARIABLE ?? "(미설정)"}</dd>
-            </div>
-            <div>
-              <dt className="font-medium">TEST_SECRET:</dt>
-              <dd className="font-mono text-xs">{process.env.NEXT_PUBLIC_TEST_SECRET ?? "(미설정)"}</dd>
-            </div>
-          </dl>
-        </div>
       </div>
     </section>
   );
