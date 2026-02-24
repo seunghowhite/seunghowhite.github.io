@@ -41,7 +41,7 @@ export default async function PostPage({ params }: ParamType) {
   const { subject, category, post } = await params;
   const { content, title, date, readingMinutes } = getPostDetailData({ subject, category, post });
   const toc = parseToc(content);
-  const postList = await getPostList(subject, category);
+  const postList = await getPostList(subject);
 
   return (
     <section className="prose mx-auto w-full max-w-[47rem] px-5 dark:prose-invert sm:px-6">
@@ -72,12 +72,13 @@ export default async function PostPage({ params }: ParamType) {
       <Giscus />
       <PostFooter
         subject={subject}
-        currentPost={post}
+        currentPostUrl={`/${subject}/${category}/${post}`}
         postList={postList.map((p) => ({
           post: p.post,
           title: p.title,
           url: p.url,
           date: p.date,
+          category: p.category,
         }))}
       />
       <FloatingButton />
