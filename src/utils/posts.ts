@@ -8,13 +8,21 @@ import readingTime from "reading-time";
 const BASE_PATH = "/src/_posts";
 const POSTS_PATH = path.join(process.cwd(), BASE_PATH);
 
+/** _로 시작하는 폴더(subject/category/post)는 임시 비공개 처리 */
+const isHiddenPath = (normalizedPath: string) => {
+  const parts = normalizedPath.split("/");
+  const postsIndex = parts.findIndex((p) => p === "_posts");
+  if (postsIndex === -1) return true;
+  const [subject, category, post] = parts.slice(postsIndex + 1, postsIndex + 4);
+  return [subject, category, post].some((part) => part?.startsWith("_"));
+};
+
 const extractDirectoryAtDepth = (path: string, depthFromEnd: number) => path.split("/").slice(-depthFromEnd)[0];
 
 export const getPostPaths = (subject?: string) => {
   const folder = subject || "**";
   const postPaths: string[] = sync(`${POSTS_PATH}/${folder}/**/**/*.mdx`);
-  // Windows 경로 구분자를 Unix 스타일로 변환
-  return postPaths.map((path) => path.replace(/\\/g, "/"));
+  return postPaths.map((p) => p.replace(/\\/g, "/")).filter((p) => !isHiddenPath(p));
 };
 
 export const getStaticParams = (type: "subject" | "category" | "post") => {
@@ -105,6 +113,9 @@ const parsePostData = (filePath: string, subject?: string, category?: string, po
 
 // getPostList 함수
 export const getPostDetailData = ({ subject, category, post }: { subject: string; category: string; post: string }) => {
+  if ([subject, category, post].some((p) => p.startsWith("_"))) {
+    throw new Error("Post not found");
+  }
   // glob 패턴에서 슬래시 사용 (Windows 경로 구분자를 슬래시로 정규화)
   const normalizedPostsPath = POSTS_PATH.replace(/\\/g, "/");
   const globPath = category
@@ -139,7 +150,9 @@ export const getPostList = async (subject?: string, category?: string) => {
       ? `${POSTS_PATH}/${subject}/${category}/**/*.mdx`
       : `${POSTS_PATH}/${subject}/**/**/*.mdx`;
 
-  const postPaths: string[] = sync(globPath);
+  const postPaths = sync(globPath)
+    .map((p) => p.replace(/\\/g, "/"))
+    .filter((p) => !isHiddenPath(p));
 
   // postPaths를 순회하며 포스트 데이터 추출
   return postPaths

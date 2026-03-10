@@ -8,6 +8,7 @@ import { Image } from "@/components/mdx/Image";
 import { ExternalLink } from "@/components/mdx/Link";
 import { Toggle } from "@/components/mdx/Toggle";
 import { WeightChart } from "@/components/mdx/WeightChart";
+import { YouTube } from "@/components/mdx/YouTube";
 import { MDXComponents } from "mdx/types";
 
 const createMdxComponents = (subject?: string, category?: string, post?: string): MDXComponents => ({
@@ -26,6 +27,7 @@ const createMdxComponents = (subject?: string, category?: string, post?: string)
   ),
   blockquote: Callout,
   Callout,
+  YouTube,
   Bookmark,
   Toggle,
   Footnote,
