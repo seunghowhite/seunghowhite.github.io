@@ -195,8 +195,8 @@ export function BigThreeChart({ monthlyBenchPress, monthlyDeadlift, monthlySquat
             />
             <Tooltip
               itemSorter={(item) => SERIES_ORDER[String(item.name)] ?? 99}
-              formatter={(value: unknown, name?: string) => {
-                const label = name ?? "";
+              formatter={(value: unknown, name?: string | number) => {
+                const label = name != null ? String(name) : "";
                 if (value == null || typeof value !== "number") return ["-", label];
                 return [`${value} kg`, label];
               }}
